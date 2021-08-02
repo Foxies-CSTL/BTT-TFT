@@ -456,9 +456,9 @@
 #define CUSTOM_4_LABEL "Bed Leveling UBL(PLA)"
 #define CUSTOM_4_GCODE "M1004 H0 B60 S0\n"
 #define CUSTOM_5_LABEL "Bed Leveling UBL(PETG)"
-#define CUSTOM_5_GCODE "M1004 H0 B60 S0\n"
+#define CUSTOM_5_GCODE "M1004 H0 B80 S0\n"
 #define CUSTOM_6_LABEL "Bed Leveling UBL(ABS)"
-#define CUSTOM_6_GCODE "M1004 H0 B60 S0\n"
+#define CUSTOM_6_GCODE "M1004 H0 B90 S0\n"
 #define CUSTOM_7_LABEL "Reboot Printer"
 #define CUSTOM_7_GCODE "M997\n"
 /*
