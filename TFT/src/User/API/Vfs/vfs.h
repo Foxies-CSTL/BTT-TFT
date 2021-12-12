@@ -1,6 +1,10 @@
 #ifndef _VFS_H_
 #define _VFS_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdbool.h>
 #include <stdint.h>
 #include "ff.h"
@@ -14,7 +18,8 @@ typedef enum
   TFT_SD,
   TFT_UDISK,
   BOARD_SD,
-  BOARD_SD_REMOTE
+  BOARD_SD_REMOTE,
+  REMOTE_HOST
 } FS_SOURCE;
 
 typedef struct
@@ -48,5 +53,9 @@ bool IsRootDir(void);
 
 bool isVolumeExist(uint8_t src);
 void loopVolumeSource(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

@@ -16,8 +16,8 @@
   #define W25QXX_SPI_DMA_RCC_AHB      RCC_AHB1Periph_DMA2
   #define W25QXX_SPI_DMA_STREAM       DMA2_Stream0
   #define W25QXX_SPI_DMA_CHANNEL      3
-  #define W25QXX_SPI_DMA_READING()    (DMA1->LISR & (1<<5)) == 0
-  #define W25QXX_SPI_DMA_CLEAR_FLAG() DMA1->LIFCR = 0x3F           // bit:0-5
+  #define W25QXX_SPI_DMA_READING()    (DMA2->LISR & (1<<5)) == 0
+  #define W25QXX_SPI_DMA_CLEAR_FLAG() DMA2->LIFCR = 0x3F           // bit:0-5
 #elif W25Qxx_SPI == _SPI2
   #define W25QXX_SPI_NUM              SPI2
   #define W25QXX_SPI_DMA_RCC_AHB      RCC_AHB1Periph_DMA1
@@ -79,7 +79,7 @@ void lcd_frame_segment_display(u16 size, u32 addr)
   W25QXX_SPI_DMA_STREAM->CR |= 1<<0;            // enable dma channel
   W25QXX_SPI_NUM->CR1 |= 1<<6;                  // enable SPI
 
-  while(W25QXX_SPI_DMA_READING());              // wait for rx complete
+  while (W25QXX_SPI_DMA_READING());             // wait for rx complete
   W25QXX_SPI_DMA_STREAM->CR &= (u32)(~(1<<0));
   W25QXX_SPI_DMA_CLEAR_FLAG();                  // clear ISR for rx complete
   W25Qxx_SPI_CS_Set(1);
