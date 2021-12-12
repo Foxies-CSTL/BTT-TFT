@@ -197,12 +197,12 @@
                         "M710 S%d\n",    "M710 I%d\n" }
 
 // Size of machine
-#define X_MIN_POS -130
-#define Y_MIN_POS -130
+#define X_MIN_POS -110
+#define Y_MIN_POS -110
 #define Z_MIN_POS   0
-#define X_MAX_POS 130
-#define Y_MAX_POS 130
-#define Z_MAX_POS 370
+#define X_MAX_POS 110
+#define Y_MAX_POS 110
+#define Z_MAX_POS 250
 
 // Speed/flow rate names displayed in status screen
 #define SPEED_ID {"Speed", "Flow"}  // (speed, flow rate)
