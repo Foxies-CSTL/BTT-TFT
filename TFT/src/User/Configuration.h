@@ -37,7 +37,7 @@
  *   Options: [OFF (port disabled): 0, 2400: 1, 9600: 2, 19200: 3, 38400: 4, 57600: 5, 115200: 6, 250000: 7, 500000: 8, 1000000: 9]
  */
 #define SP_1 6  // Default: 6
-#define SP_2 0  // Default: 0
+#define SP_2 5  // Default: 0
 #define SP_3 0  // Default: 0
 #define SP_4 0  // Default: 0
 
@@ -50,7 +50,7 @@
  *
  *   Options: [disable: 0, enable: 1]
  */
-#define EMULATED_M600 1  // Default: 1
+#define EMULATED_M600 0  // Default: 1
 
 /**
  * Emulated M109 And M190
@@ -279,7 +279,7 @@
  * no matter which mode the TFT is in.
  *   Options: [disable: 0, enable: 1]
  */
-#define SERIAL_ALWAYS_ON 0  // Default: 0
+#define SERIAL_ALWAYS_ON 1  // Default: 0
 
 /**
  * Marlin Mode Background & Font Colors
@@ -292,7 +292,7 @@
  *             ORANGE: 8, PURPLE: 9, LIME: 10, BROWN: 11, DARKBLUE: 12, DARKGREEN: 13,    GRAY: 14, DARKGRAY: 15]
  */
 #define MARLIN_BACKGROUND_COLOR 1  // Marlin Mode background color (Default: 1)
-#define MARLIN_FONT_COLOR       0  // Marlin Mode font color (Default: 0)
+#define MARLIN_FONT_COLOR       8  // Marlin Mode font color (Default: 0)
 
 /**
  * Fullscreen Marlin Mode
@@ -302,7 +302,7 @@
  *
  *   Options: [disable: 0, enable: 1]
  */
-#define MARLIN_FULLSCREEN 0  // Default: 0
+#define MARLIN_FULLSCREEN 1 // Default: 0
 
 /**
  * Show Marlin Mode Title
@@ -316,7 +316,7 @@
  * Banner text displayed at the top of the TFT in Marlin Mode.
  *   Value range: [min: 3, max: 20 characthers]
  */
-#define MARLIN_TITLE "Marlin Mode"  // Default: "Marlin Mode"
+#define MARLIN_TITLE "Mode LCD"  // Default: "Marlin Mode"
 
 /**
  * Marlin Mode Type
@@ -368,7 +368,7 @@
  * firmware supports controller fan (M710).
  *   Options: [disable: 0, enable: 1]
  */
-#define CONTROLLER_FAN 0  // Default: 0
+#define CONTROLLER_FAN 1  // Default: 0
 
 /**
  * Bed / Extruder / Chamber Maximum Temperatures
@@ -412,8 +412,8 @@
 #define X_MIN_POS   0  // Default: 0
 #define Y_MIN_POS   0  // Default: 0
 #define Z_MIN_POS   0  // Default: 0
-#define X_MAX_POS 235  // Default: 235
-#define Y_MAX_POS 235  // Default: 235
+#define X_MAX_POS 220  // Default: 235
+#define Y_MAX_POS 220  // Default: 235
 #define Z_MAX_POS 250  // Default: 250
 
 /**
@@ -456,7 +456,7 @@
  * to enable leveling state after startup.
  *   Options: [disable: 0, enable: 1]
  */
-#define AUTO_LOAD_LEVELING 1  // Default: 1
+#define AUTO_LOAD_LEVELING 0  // Default: 1
 
 /**
  * Onboard / Printer SD
@@ -637,7 +637,7 @@
  * Enable this option for displaying TouchMI sensor settings in ABL menu (Init, Z Offset, Save, Test).
  *   Options: [disable: 0, enable: 1]
  */
-#define TOUCHMI_SENSOR 0  // Default: 0
+#define TOUCHMI_SENSOR 1  // Default: 0
 
 /**
  * Preheat Temperatures
@@ -664,7 +664,7 @@
  * The power supply uses the opposite of this logic to stay OFF.
  *   Options: [disable: 0, enable: 1]
  */
-#define PS_ACTIVE_HIGH 1  // Default: 1
+#define PS_ACTIVE_HIGH 0  // Default: 1
 
 /**
  * Power Supply Auto Shutdown Mode
@@ -733,7 +733,7 @@
  *   Unit: [distance in mm]
  *   Value range: [min: 1, max: 50]
  */
-#define FIL_RUNOUT_DISTANCE 7  // Default: 7
+#define FIL_RUNOUT_DISTANCE 3  // Default: 7
 
 //================================================================================
 //==================== Power Loss Recovery & BTT UPS Settings ====================
@@ -750,7 +750,7 @@
  * Disable to reduce the loss of SD card or U disk.
  *   Options: [disable: 0, enable: 1]
  */
-#define PL_RECOVERY 1  // Default: 1
+#define PL_RECOVERY 0  // Default: 1
 
 /**
  * Power Loss Recovery Homing
@@ -836,7 +836,7 @@
  * Knob LED color at startup.
  *   Options: [OFF: 0, WHITE: 1, RED: 2, ORANGE: 3, YELLOW: 4, GREEN: 5, BLUE: 6, INDIGO: 7, VIOLET: 8]
  */
-#define KNOB_LED_COLOR 1  // Default: 1
+#define KNOB_LED_COLOR 3  // Default: 1
 
 // Keep the LED state in Marlin Mode
 #define KEEP_KNOB_LED_COLOR_MARLIN_MODE  // Default: uncommented (enabled)
@@ -922,9 +922,9 @@
  * Start, End and Cancel G-code Status
  *   Options: [disable: 0, enable: 1]
  */
-#define START_GCODE_ENABLED  0  // Default: 0
-#define END_GCODE_ENABLED    0  // Default: 0
-#define CANCEL_GCODE_ENABLED 0  // Default: 0
+#define START_GCODE_ENABLED  1  // Default: 0
+#define END_GCODE_ENABLED    1  // Default: 0
+#define CANCEL_GCODE_ENABLED 1  // Default: 0
 
 /**
  * Start, End and Cancel G-code
@@ -933,9 +933,9 @@
  * CANCEL_GCODE will run when a print is canceled if "CANCEL_GCODE_ENABLED" is enabled.
  *   Value range: [min: 3, max: 75 characters]
  */
-#define START_GCODE  "G28 XY R20\n"
-#define END_GCODE    "M104 S0\nM140 S0\nM107\nM18\n"
-#define CANCEL_GCODE "M104 S0\nM140 S0\nG28 XY R10\nM107\nM18\n"
+#define START_GCODE  "M75\n"  //"G28 XY R20\n"
+#define END_GCODE     "M77\n"  //"M104 S0\nM140 S0\nM107\nM18\n"
+#define CANCEL_GCODE  "G28\n" //"M104 S0\nM140 S0\nG28 XY R10\nM107\nM18\n"
 
 //====================================================================================================
 //============================ Settings Configurable At Compile Time Only ============================
