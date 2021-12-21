@@ -37,7 +37,7 @@
  *   Options: [OFF (port disabled): 0, 2400: 1, 9600: 2, 19200: 3, 38400: 4, 57600: 5, 115200: 6, 250000: 7, 500000: 8, 1000000: 9]
  */
 #define SP_1 7  // Default: 6
-#define SP_2 0  // Default: 0
+#define SP_2 6  // Default: 0
 #define SP_3 0  // Default: 0
 #define SP_4 0  // Default: 0
 
@@ -464,7 +464,7 @@
  * to enable leveling state after startup.
  *   Options: [disable: 0, enable: 1]
  */
-#define AUTO_LOAD_LEVELING 1  // Default: 1
+#define AUTO_LOAD_LEVELING 0  // Default: 1
 
 /**
  * Onboard / Printer SD
@@ -741,7 +741,7 @@
  *   Unit: [distance in mm]
  *   Value range: [min: 1, max: 50]
  */
-#define FIL_RUNOUT_DISTANCE 50  // Default: 7
+#define FIL_RUNOUT_DISTANCE 5  // Default: 7
 
 //================================================================================
 //==================== Power Loss Recovery & BTT UPS Settings ====================
@@ -758,7 +758,7 @@
  * Disable to reduce the loss of SD card or U disk.
  *   Options: [disable: 0, enable: 1]
  */
-#define PL_RECOVERY 1  // Default: 1
+#define PL_RECOVERY 0  // Default: 1
 
 /**
  * Power Loss Recovery Homing
@@ -844,7 +844,7 @@
  * Knob LED color at startup.
  *   Options: [OFF: 0, WHITE: 1, RED: 2, ORANGE: 3, YELLOW: 4, GREEN: 5, BLUE: 6, INDIGO: 7, VIOLET: 8]
  */
-#define KNOB_LED_COLOR 1  // Default: 1
+#define KNOB_LED_COLOR 0  // Default: 1
 
 // Keep the LED state in Marlin Mode
 #define KEEP_KNOB_LED_COLOR_MARLIN_MODE  // Default: uncommented (enabled)
@@ -854,7 +854,7 @@
  * If enabled, when the LCD is idle (dimmed) then the knob LED will be also switched off.
  *   Options: [disable: 0, enable: 1]
  */
-#define KNOB_LED_IDLE 1  // Default: 1
+#define KNOB_LED_IDLE 0  // Default: 1
 
 /**
  * Knob LED Pixels (only for TFT28/TFT35_E3/TFT43/TFT50/TFT70 V3.0)
@@ -1038,7 +1038,7 @@
                         "M710 S%d\n",    "M710 I%d\n" }
 
 // Speed/flow rate names displayed in status screen
-#define SPEED_ID {"Speed", "Flow"}  // (speed, flow rate)
+#define SPEED_ID {"Vit.", "Rat."}  // (speed, flow rate)
 
 // Axes names displayed in Parameter Settings menu
 #define AXIS_DISPLAY_ID    {"X", "Y", "Z", "E0", "E1"}                    // (X, Y, Z, E0, E1)
