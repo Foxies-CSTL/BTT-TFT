@@ -36,7 +36,7 @@
  *                P4: [min: 0, max: 9]
  *   Options: [OFF (port disabled): 0, 2400: 1, 9600: 2, 19200: 3, 38400: 4, 57600: 5, 115200: 6, 250000: 7, 500000: 8, 1000000: 9]
  */
-#define SP_1 6  // Default: 6
+#define SP_1 7  // Default: 6
 #define SP_2 0  // Default: 0
 #define SP_3 0  // Default: 0
 #define SP_4 0  // Default: 0
@@ -50,7 +50,7 @@
  *
  *   Options: [disable: 0, enable: 1]
  */
-#define EMULATED_M600 1  // Default: 1
+#define EMULATED_M600 0  // Default: 1
 
 /**
  * Emulated M109 And M190
@@ -180,6 +180,14 @@
 #define FILES_LIST_MODE 1  // Default: 1
 
 /**
+ * Filename Extension
+ * Display fullname for files listed in List Mode / Icon Mode menu.
+ * If disabled, any filename extension starting with ".g" or ".G" (e.g. ".g", ".gco", ".gcode" etc.) will be hidden.
+ *   Options: [disable: 0, enable: 1]
+ */
+#define FILENAME_EXTENSION 0  // Default: 1
+
+/**
  * Fan Speed In Percentage
  * Show fan speed in percentage. If disabled fan speeed will be displayed as PWM values.
  *   Options: [disable: 0, enable: 1]
@@ -191,7 +199,7 @@
  * Show persistent temperature info in all menus.
  *   Options: [disable: 0, enable: 1]
  */
-#define PERSISTENT_INFO 0  // Default: 0
+#define PERSISTENT_INFO 1  // Default: 0
 
 /**
  * Temperature ACK In Terminal
@@ -212,7 +220,7 @@
  *
  *   Options: [disable: 0, enable: 1]
  */
-#define NOTIFICATION_M117 0  // Default: 0
+#define NOTIFICATION_M117 1  // Default: 0
 
 /**
  * Progress Numeric Display Mode During Print
@@ -254,7 +262,7 @@
  *
  *   Options: [Layer height: 0, Layer number: 1, Both - height & number: 2]
  */
-#define LAYER_DISP_TYPE 0  // Default: 0
+#define LAYER_DISP_TYPE 2  // Default: 0
 
 //================================================================================
 //============================= Marlin Mode Settings =============================
@@ -270,7 +278,7 @@
  *
  *   Options: [Marlin Mode: 0, Touch Mode: 1, Blocked Marlin Mode: 2, Blocked Touch Mode: 3]
  */
-#define DEFAULT_MODE 1  // Default: 1
+#define DEFAULT_MODE 3  // Default: 1
 
 /**
  * Serial Always ON
@@ -302,7 +310,7 @@
  *
  *   Options: [disable: 0, enable: 1]
  */
-#define MARLIN_FULLSCREEN 0  // Default: 0
+#define MARLIN_FULLSCREEN 1  // Default: 0
 
 /**
  * Show Marlin Mode Title
@@ -378,7 +386,7 @@
  *                bed:     [min: 20, max: 400]
  *                chamber: [min: 20, max: 200]
  */
-#define MAX_TEMP {275, 275, 275, 275, 275, 275, 150, 60}  // Default: {275, 275, 275, 275, 275, 275, 150, 60}
+#define MAX_TEMP {275, 275, 275, 275, 275, 275, 110, 60}  // Default: {275, 275, 275, 275, 275, 275, 150, 60}
 
 /**
  * Cold Extrusion Minimum Temperature
@@ -409,11 +417,11 @@
  *   Unit: [distance in mm]
  *   Value range: [min: -2000, max: 2000]
  */
-#define X_MIN_POS -110  // Default: 0
-#define Y_MIN_POS -110  // Default: 0
+#define X_MIN_POS -130  // Default: 0
+#define Y_MIN_POS -130  // Default: 0
 #define Z_MIN_POS    0  // Default: 0
-#define X_MAX_POS  110  // Default: 235
-#define Y_MAX_POS  110  // Default: 235
+#define X_MAX_POS  130  // Default: 235
+#define Y_MAX_POS  130  // Default: 235
 #define Z_MAX_POS  350  // Default: 250
 
 /**
@@ -526,13 +534,13 @@
  *   Unit: [feedrate in mm/min]
  *   Value range: [min: 10, max: 12000]
  */
-#define NOZZLE_PAUSE_RETRACT_LENGTH               15.0f  // (mm) (Default: 15.0f)
-#define NOZZLE_RESUME_PURGE_LENGTH                16.0f  // (mm) (Default: 16.0f)
-#define NOZZLE_PAUSE_X_POSITION     (X_MIN_POS + 10.0f)  // (mm) (Default: 10.0f)
-#define NOZZLE_PAUSE_Y_POSITION     (Y_MIN_POS + 10.0f)  // (mm) (Default: 10.0f)
-#define NOZZLE_PAUSE_Z_RAISE                      10.0f  // (mm) (Default: 10.0f)
-#define NOZZLE_PAUSE_XY_FEEDRATE                   6000  // (mm/min) X and Y axes feedrate (Default: 6000)
-#define NOZZLE_PAUSE_Z_FEEDRATE                    6000  // (mm/min) Z axis feedrate (Default: 6000)
+#define NOZZLE_PAUSE_RETRACT_LENGTH                5.0f  // (mm) (Default: 15.0f)
+#define NOZZLE_RESUME_PURGE_LENGTH                10.0f  // (mm) (Default: 16.0f)
+#define NOZZLE_PAUSE_X_POSITION                    0.0f  // (mm) (Default: 10.0f)
+#define NOZZLE_PAUSE_Y_POSITION     (Y_MAX_POS - 30.0f)  // (mm) (Default: 10.0f)
+#define NOZZLE_PAUSE_Z_RAISE                      50.0f  // (mm) (Default: 10.0f)
+#define NOZZLE_PAUSE_XY_FEEDRATE                   3000  // (mm/min) X and Y axes feedrate (Default: 6000)
+#define NOZZLE_PAUSE_Z_FEEDRATE                     300  // (mm/min) Z axis feedrate (Default: 6000)
 #define NOZZLE_PAUSE_E_FEEDRATE                     600  // (mm/min) retract & purge feedrate (Default: 600)
 
 /**
@@ -563,11 +571,11 @@
  *   Unit: [feedrate in mm/min]
  *   Value range: [min: 10, max: 12000]
  */
-#define LEVELING_EDGE_DISTANCE    20  // (mm) Inset distance from bed's edge for calculating leveling point location (Default: 20)
+#define LEVELING_EDGE_DISTANCE    10  // (mm) Inset distance from bed's edge for calculating leveling point location (Default: 20)
 #define LEVELING_Z_POS          0.2f  // (mm) Z-axis position when nozzle stays for leveling (Default: 0.2f)
 #define LEVELING_Z_RAISE       10.0f  // (mm) Z-axis position when nozzle move to next point (Default: 10.0f)
-#define LEVELING_XY_FEEDRATE    6000  // (mm/min) X and Y axes move feedrate (Default: 6000)
-#define LEVELING_Z_FEEDRATE     6000  // (mm/min) Z axis move feedrate (Default: 6000)
+#define LEVELING_XY_FEEDRATE    3000  // (mm/min) X and Y axes move feedrate (Default: 6000)
+#define LEVELING_Z_FEEDRATE      600  // (mm/min) Z axis move feedrate (Default: 6000)
 
 /**
  * Inverted Axes (Manual Leveling, Move, Probe Offset)
@@ -604,7 +612,7 @@
  *
  *   Options: [disable: 0, enable: 1]
  */
-#define PROBING_Z_OFFSET 1  // Default: 1
+#define PROBING_Z_OFFSET 0  // Default: 1
 
 /**
  * Probing Z Raise (Probe Offset, Mesh Editor)
@@ -649,8 +657,8 @@
  *                bed temp:    [min: 20, max: 400]
  */
 #define PREHEAT_LABELS {"PLA", "PETG", "ABS", "WOOD", "TPU", "NYLON"}  // Default: {"PLA", "PETG", "ABS", "WOOD", "TPU", "NYLON"}
-#define PREHEAT_HOTEND {200,   240,    230,   170,    220,   250}      // Default: {200,   240,    230,   170,    220,   250}
-#define PREHEAT_BED    { 60,    70,     90,    50,     50,    90}      // Default: { 60,    70,     90,    50,     50,    90}
+#define PREHEAT_HOTEND {200,   230,    240,   200,    230,   250}      // Default: {200,   240,    230,   170,    220,   250}
+#define PREHEAT_BED    { 60,    80,     90,    60,     50,    90}      // Default: { 60,    70,     90,    50,     50,    90}
 
 //================================================================================
 //============================ Power Supply Settings =============================
@@ -1030,7 +1038,7 @@
                         "M710 S%d\n",    "M710 I%d\n" }
 
 // Speed/flow rate names displayed in status screen
-#define SPEED_ID {"Sp.", "Fr."}  // (speed, flow rate)
+#define SPEED_ID {"Speed", "Flow"}  // (speed, flow rate)
 
 // Axes names displayed in Parameter Settings menu
 #define AXIS_DISPLAY_ID    {"X", "Y", "Z", "E0", "E1"}                    // (X, Y, Z, E0, E1)
@@ -1040,7 +1048,7 @@
 // Move to four corner points to Leveling manually (Point 1, Point 2, Point 3, Point 4).
 #define LEVELING_EDGE_DISTANCE_DISPLAY_ID "X/Y"
 #define LEVELING_EDGE_DISTANCE_MIN           0                    // Default: 0
-#define LEVELING_EDGE_DISTANCE_MAX         100                    // Default: 100
+#define LEVELING_EDGE_DISTANCE_MAX         110                    // Default: 100
 #define LEVELING_EDGE_DISTANCE_DEFAULT    LEVELING_EDGE_DISTANCE  // Default: LEVELING_EDGE_DISTANCE
 
 // Z Fade limits
@@ -1049,7 +1057,7 @@
 #define Z_FADE_DEFAULT_VALUE 10.0f  // Default: 10.0f
 
 // Probe Offset limits
-#define PROBE_Z_OFFSET_MIN_VALUE     -20.0f  // Default: -20.0f
+#define PROBE_Z_OFFSET_MIN_VALUE     -30.0f  // Default: -20.0f
 #define PROBE_Z_OFFSET_MAX_VALUE      20.0f  // Default: 20.0f
 #define PROBE_Z_OFFSET_DEFAULT_VALUE   0.0f  // Default: 0.0f
 
@@ -1069,8 +1077,8 @@
  * Set the maximum number of grid points per dimension.
  *   Value range: [min: 1, max: 15]
  */
-#define MESH_GRID_MAX_POINTS_X 15  // Default: 15
-#define MESH_GRID_MAX_POINTS_Y 15  // Default: 15
+#define MESH_GRID_MAX_POINTS_X 8  // Default: 15
+#define MESH_GRID_MAX_POINTS_Y 8  // Default: 15
 
 /**
  * Bed Leveling Type
@@ -1182,7 +1190,7 @@
 #define SHOW_BTT_BOOTSCREEN  // Default: uncommented (enabled)
 
 // Bootscreen logo time in ms
-#define BTT_BOOTSCREEN_TIME 3000  // Default: 3000
+#define BTT_BOOTSCREEN_TIME 4000  // Default: 3000
 
 /**
  * Smart Home
@@ -1250,28 +1258,28 @@
 #define KEYBOARD_COLOR_LAYOUT 0  // Default: 0
 
 /**
- * QWERTY/QWERTZ Keyboard Layout (Terminal menu)
+ * QWERTY/QWERTZ Keyboard Layout
  * Keyboard layout for Terminal Keyboard (Only for TFT70 V3.0).
  *   Options: [qwerty: 0, qwertz: 1, azerty: 2]
  *     qwerty: The typically keyboard Layout for english.
  *     qwertz: The typically keyboard Layout for german.
  *     azerty: The typically keyboard Layout for french.
  */
-#define TERMINAL_KEYBOARD_LAYOUT 2  // Default: 0
+#define TERMINAL_KEYBOARD_LAYOUT 0  // Default: 0
 
 /**
  * Progress Bar Color (Printing menu)
  * The color of the progress bar during print.
  *   Options: [Orange: 0, Yellow: 1, Red: 2, Green: 3, Blue: 4, Cyan: 5, Magenta: 6, Purple: 7, Lime: 8, Gray: 9]
  */
-#define PROGRESS_BAR_COLOR 0  // Default: 0
+#define PROGRESS_BAR_COLOR 3  // Default: 0
 
 /**
  * Progress Bar Layout (Printing menu)
  * Uncomment to enable a progress bar with 10% markers.
  * Comment to enable a standard progress bar.
  */
-#define MARKED_PROGRESS_BAR  // Default: commented (disabled)
+//#define MARKED_PROGRESS_BAR  // Default: commented (disabled)
 
 /**
  * Live Text Common Color Layout (Status Screen menu)
@@ -1280,7 +1288,7 @@
  * (e.g. for THEME_Rep Rap Firmware Dark theme).
  * Comment to use standard colors.
  */
-//#define LIVE_TEXT_COMMON_COLOR  // Default: commented (disabled)
+#define LIVE_TEXT_COMMON_COLOR  // Default: commented (disabled)
 
 /**
  * Live Text Background Color Rendering Technique (Printing menu and Status Screen menu)
@@ -1344,6 +1352,6 @@
  *                    require dedicated post-processing of gcode files for most slicers.
  *                    "RGB565 bitmap" and "Classic" are used as fallback.
  */
-#define THUMBNAIL_PARSER 0  // Default: 0
+#define THUMBNAIL_PARSER 2  // Default: 0
 
 #endif
