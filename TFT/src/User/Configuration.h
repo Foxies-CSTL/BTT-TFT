@@ -1,7 +1,7 @@
 #ifndef _CONFIGURATION_H_
 #define _CONFIGURATION_H_
 
-#define CONFIG_VERSION 20211130
+#define CONFIG_VERSION 20211210
 
 //====================================================================================================
 //=============================== Settings Configurable On config.ini ================================
@@ -185,7 +185,7 @@
  * If disabled, any filename extension starting with ".g" or ".G" (e.g. ".g", ".gco", ".gcode" etc.) will be hidden.
  *   Options: [disable: 0, enable: 1]
  */
-#define FILENAME_EXTENSION 0  // Default: 1
+#define FILENAME_EXTENSION 1  // Default: 1
 
 /**
  * Fan Speed In Percentage
