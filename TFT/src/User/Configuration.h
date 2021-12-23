@@ -38,7 +38,7 @@
  */
 #define SP_1 7  // Default: 6
 #define SP_2 6  // Default: 0
-#define SP_3 0  // Default: 0
+#define SP_3 6  // Default: 0
 #define SP_4 0  // Default: 0
 
 /**
@@ -160,7 +160,7 @@
  *     POPUP: Display a popup window for user confirmation.
  *     TOAST: A non-blocking Toast notification is displayed for few seconds. No user interaction is needed.
  */
-#define ACK_NOTIFICATION 2  // Default: 1
+#define ACK_NOTIFICATION 1  // Default: 1
 
 /**
  * Files Sorting
@@ -612,7 +612,7 @@
  *
  *   Options: [disable: 0, enable: 1]
  */
-#define PROBING_Z_OFFSET 0  // Default: 1
+#define PROBING_Z_OFFSET 1  // Default: 1
 
 /**
  * Probing Z Raise (Probe Offset, Mesh Editor)
@@ -672,7 +672,7 @@
  * The power supply uses the opposite of this logic to stay OFF.
  *   Options: [disable: 0, enable: 1]
  */
-#define PS_ACTIVE_HIGH 1  // Default: 1
+#define PS_ACTIVE_HIGH 0  // Default: 1
 
 /**
  * Power Supply Auto Shutdown Mode
@@ -883,22 +883,24 @@
  *   Value range: label: [min: 3, max: 75 characters]
  *                G-code: [min: 3, max: 75 characters]
  */
-#define CUSTOM_0_LABEL "Init. EEPROM"
+#define CUSTOM_0_LABEL "Init.EEPROM"
 #define CUSTOM_0_GCODE "M502\nM500\nM997\n"
-#define CUSTOM_1_LABEL "Fast Calib. Delta"
+#define CUSTOM_1_LABEL "Fast Calib.Delta"
 #define CUSTOM_1_GCODE "G33 P3 V3\nM500\nM140 S0\n"
-#define CUSTOM_2_LABEL "Fine Calib. Delta"
+#define CUSTOM_2_LABEL "Fine Calib.Delta"
 #define CUSTOM_2_GCODE "G33 P5 V3\nM500\nM140 S0\n"
-#define CUSTOM_3_LABEL "PID Nozzle for PLA"
-#define CUSTOM_3_GCODE "M106 P0 S180\nM303 E0 C8 S210 U\nM500\nG28\nM107\n"
-#define CUSTOM_4_LABEL "Level.UBL(PLA)"
-#define CUSTOM_4_GCODE "M1004 H0 B60 S0\n"
-#define CUSTOM_5_LABEL "Level.UBL(PETG)"
-#define CUSTOM_5_GCODE "M1004 H0 B80 S0\n"
-#define CUSTOM_6_LABEL "Level.UBL(ABS)"
-#define CUSTOM_6_GCODE "M1004 H0 B90 S0\n"
-#define CUSTOM_7_LABEL "Reboot Printer"
-#define CUSTOM_7_GCODE "M997\n"
+#define CUSTOM_3_LABEL "0.BedLevel.UBL (PLA)"
+#define CUSTOM_3_GCODE "M1004 H0 B60 S0\n"
+#define CUSTOM_4_LABEL "0.RunPIDNozzlefor (PLA)"
+#define CUSTOM_4_GCODE "M106 P0 S180\nM303 E0 C8 S210 U\nM500\nG28\nM107\n"
+#define CUSTOM_5_LABEL "0.PrintTestPattern in PLA"
+#define CUSTOM_5_GCODE "G28W\nG29 L0\nG26 I0 P4\nM500\nG28W"
+#define CUSTOM_6_LABEL "1.BedLevel.UBL for PETG"
+#define CUSTOM_6_GCODE "M1004 H0 B80 S0\n"
+#define CUSTOM_7_LABEL "2.BedLevel.UBL for ABS"
+#define CUSTOM_7_GCODE "M1004 H0 B90 S0\n"
+#define CUSTOM_8_LABEL "Reboot Printer"
+#define CUSTOM_8_GCODE "M997\n"
 //#define CUSTOM_LABEL_7 "Custom7"
 //#define CUSTOM_GCODE_7 "M105\n"
 //#define CUSTOM_LABEL_8 "Custom8"
@@ -1091,7 +1093,7 @@
  *
  *   Options: [disable: 0, auto-detect: 1, ABL: 2, BBL: 3, UBL: 4, MBL: 5]
  */
-#define BED_LEVELING_TYPE 1  // Default: 1
+#define BED_LEVELING_TYPE 4  // Default: 1
 
 /**
  * MBL Settings
@@ -1352,6 +1354,6 @@
  *                    require dedicated post-processing of gcode files for most slicers.
  *                    "RGB565 bitmap" and "Classic" are used as fallback.
  */
-#define THUMBNAIL_PARSER 2  // Default: 0
+#define THUMBNAIL_PARSER 0  // Default: 0
 
 #endif
