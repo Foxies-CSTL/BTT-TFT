@@ -36,7 +36,7 @@
  *                P4: [min: 0, max: 9]
  *   Options: [OFF (port disabled): 0, 2400: 1, 9600: 2, 19200: 3, 38400: 4, 57600: 5, 115200: 6, 250000: 7, 500000: 8, 1000000: 9]
  */
-#define SP_1 7  // Default: 6
+#define SP_1 6  // Default: 6
 #define SP_2 6  // Default: 0
 #define SP_3 6  // Default: 0
 #define SP_4 0  // Default: 0
@@ -160,7 +160,7 @@
  *     POPUP: Display a popup window for user confirmation.
  *     TOAST: A non-blocking Toast notification is displayed for few seconds. No user interaction is needed.
  */
-#define ACK_NOTIFICATION 1  // Default: 1
+#define ACK_NOTIFICATION 2  // Default: 1
 
 /**
  * Files Sorting
@@ -278,7 +278,7 @@
  *
  *   Options: [Marlin Mode: 0, Touch Mode: 1, Blocked Marlin Mode: 2, Blocked Touch Mode: 3]
  */
-#define DEFAULT_MODE 3  // Default: 1
+#define DEFAULT_MODE 1  // Default: 1
 
 /**
  * Serial Always ON
@@ -324,7 +324,7 @@
  * Banner text displayed at the top of the TFT in Marlin Mode.
  *   Value range: [min: 3, max: 20 characthers]
  */
-#define MARLIN_TITLE "Marlin Mode LCD"  // Default: "Marlin Mode"
+#define MARLIN_TITLE "FLSUNQ Mode LCD"  // Default: "Marlin Mode"
 
 /**
  * Marlin Mode Type
@@ -386,7 +386,7 @@
  *                bed:     [min: 20, max: 400]
  *                chamber: [min: 20, max: 200]
  */
-#define MAX_TEMP {275, 275, 275, 275, 275, 275, 110, 60}  // Default: {275, 275, 275, 275, 275, 275, 150, 60}
+#define MAX_TEMP {290, 275, 275, 275, 275, 275, 110, 60}  // Default: {275, 275, 275, 275, 275, 275, 150, 60}
 
 /**
  * Cold Extrusion Minimum Temperature
@@ -417,12 +417,12 @@
  *   Unit: [distance in mm]
  *   Value range: [min: -2000, max: 2000]
  */
-#define X_MIN_POS -130  // Default: 0
-#define Y_MIN_POS -130  // Default: 0
+#define X_MIN_POS -132  // Default: 0
+#define Y_MIN_POS -132  // Default: 0
 #define Z_MIN_POS    0  // Default: 0
-#define X_MAX_POS  130  // Default: 235
-#define Y_MAX_POS  130  // Default: 235
-#define Z_MAX_POS  350  // Default: 250
+#define X_MAX_POS  132  // Default: 235
+#define Y_MAX_POS  132  // Default: 235
+#define Z_MAX_POS  320  // Default: 250
 
 /**
  * X & Y Move Speeds/Feedrates
@@ -431,9 +431,9 @@
  *   Unit: [feedrate in mm/min]
  *   Value range: [min: 10, max: 12000]
  */
-#define SPEED_XY_SLOW   1000  // Default: 1000
-#define SPEED_XY_NORMAL 3000  // Default: 3000
-#define SPEED_XY_FAST   5000  // Default: 5000
+#define SPEED_XY_SLOW   1500  // 25mm/s Default: 1000
+#define SPEED_XY_NORMAL 4200  // 80mm/s Default: 3000
+#define SPEED_XY_FAST   9000  // 150mm/s Default: 5000
 
 /**
  * Z Speeds/Feedrates
@@ -442,9 +442,9 @@
  *   Unit: [feedrate in mm/min]
  *   Value range: [min: 10, max: 12000]
  */
-#define SPEED_Z_SLOW   500   // Default: 500
-#define SPEED_Z_NORMAL 1000  // Default: 1000
-#define SPEED_Z_FAST   2000  // Default: 2000
+#define SPEED_Z_SLOW    400   // 6.6mm/s Default: 500
+#define SPEED_Z_NORMAL 1000  // 16.6mm/s Default: 1000
+#define SPEED_Z_FAST   2400  // 40.0mm/s Default: 2000
 
 /**
  * Extruder Speeds/Feedrates
@@ -539,7 +539,7 @@
 #define NOZZLE_PAUSE_X_POSITION                    0.0f  // (mm) (Default: 10.0f)
 #define NOZZLE_PAUSE_Y_POSITION     (Y_MAX_POS - 30.0f)  // (mm) (Default: 10.0f)
 #define NOZZLE_PAUSE_Z_RAISE                      50.0f  // (mm) (Default: 10.0f)
-#define NOZZLE_PAUSE_XY_FEEDRATE                   3000  // (mm/min) X and Y axes feedrate (Default: 6000)
+#define NOZZLE_PAUSE_XY_FEEDRATE                   6000  // (mm/min) X and Y axes feedrate (Default: 6000)
 #define NOZZLE_PAUSE_Z_FEEDRATE                     300  // (mm/min) Z axis feedrate (Default: 6000)
 #define NOZZLE_PAUSE_E_FEEDRATE                     600  // (mm/min) retract & purge feedrate (Default: 600)
 
@@ -574,8 +574,8 @@
 #define LEVELING_EDGE_DISTANCE    10  // (mm) Inset distance from bed's edge for calculating leveling point location (Default: 20)
 #define LEVELING_Z_POS          0.2f  // (mm) Z-axis position when nozzle stays for leveling (Default: 0.2f)
 #define LEVELING_Z_RAISE       10.0f  // (mm) Z-axis position when nozzle move to next point (Default: 10.0f)
-#define LEVELING_XY_FEEDRATE    3000  // (mm/min) X and Y axes move feedrate (Default: 6000)
-#define LEVELING_Z_FEEDRATE      600  // (mm/min) Z axis move feedrate (Default: 6000)
+#define LEVELING_XY_FEEDRATE    3960  // (mm/min) X and Y axes move feedrate (Default: 6000)
+#define LEVELING_Z_FEEDRATE      400  // (mm/min) Z axis move feedrate (Default: 6000)
 
 /**
  * Inverted Axes (Manual Leveling, Move, Probe Offset)
@@ -609,10 +609,10 @@
  *     printer specific configuration).
  *   - Disable it (preferably) in case Marlin firmware is configured to use the probe for Z axis
  *     homing (e.g. USE_PROBE_FOR_Z_HOMING enabled in Marlin firmware).
- *
+ *   - Delta 
  *   Options: [disable: 0, enable: 1]
  */
-#define PROBING_Z_OFFSET 1  // Default: 1
+#define PROBING_Z_OFFSET 0  // Default: 1
 
 /**
  * Probing Z Raise (Probe Offset, Mesh Editor)
@@ -717,14 +717,14 @@
  * The sensor uses an inverted logic.
  *   Options: [disable: 0, enable: 1]
  */
-#define FIL_RUNOUT_INVERTED 1  // Default: 1
+#define FIL_RUNOUT_INVERTED 0  // Default: 1
 
 /**
  * NC (Normal Close) Filament Runout Sensor
  * The sensor is of type NC.
  *   Options: [Normal Open: 0, Normal Close: 1]
  */
-#define FIL_RUNOUT_NC 1  // Default: 1
+#define FIL_RUNOUT_NC 0  // Default: 1
 
 /**
  * Filament Runout Noise Threshold
@@ -741,7 +741,7 @@
  *   Unit: [distance in mm]
  *   Value range: [min: 1, max: 50]
  */
-#define FIL_RUNOUT_DISTANCE 5  // Default: 7
+#define FIL_RUNOUT_DISTANCE 25  // Default: 7
 
 //================================================================================
 //==================== Power Loss Recovery & BTT UPS Settings ====================
@@ -803,16 +803,16 @@
  *   Options: [disable: 0, enable: 1]
  */
 #define TOUCH_SOUND  1  // Default: 1
-#define TOAST_SOUND  1  // Default: 1
+#define TOAST_SOUND  0  // Default: 1
 #define ALERT_SOUND  1  // Default: 1
-#define HEATER_SOUND 1  // Default: 1
+#define HEATER_SOUND 0  // Default: 1
 
 /**
  * LCD Brightness Levels (only for TFT28/TFT35/TFT43/TFT50/TFT70 V3.0)
  * Brightness levels for LCD.
  *   Options: [OFF: 0, 5%: 1, 10%: 2, 20%: 3, 30%: 4, 40%: 5, 50%: 6, 60%: 7, 70%: 8, 80%: 9, 90%: 10, 100%: 11]
  */
-#define LCD_BRIGHTNESS      11  // LCD brightness level (Default: 11)
+#define LCD_BRIGHTNESS       9  // LCD brightness level (Default: 11)
 #define LCD_IDLE_BRIGHTNESS  5  // LCD brightness level when device is idle (Default: 5)
 
 /**
@@ -821,7 +821,7 @@
  * period of the LCD idle time.
  *   Options: [OFF: 0, 5sec: 1, 10sec: 2, 30sec: 3, 1min: 4, 2min: 5, 5min: 6, 10min: 7]
  */
-#define LCD_IDLE_TIME 0  // Default: 0
+#define LCD_IDLE_TIME 7  // Default: 0
 
 // Custom value in seconds. This will be used if LCD_IDLE_TIME is set to 7 (CUSTOM Seconds)
 #define IDLE_TIME_CUSTOM (10 * 60)  // Default: 10 * 60
@@ -854,7 +854,7 @@
  * If enabled, when the LCD is idle (dimmed) then the knob LED will be also switched off.
  *   Options: [disable: 0, enable: 1]
  */
-#define KNOB_LED_IDLE 0  // Default: 1
+#define KNOB_LED_IDLE 1  // Default: 1
 
 /**
  * Knob LED Pixels (only for TFT28/TFT35_E3/TFT43/TFT50/TFT70 V3.0)
@@ -934,9 +934,9 @@
  * Start, End and Cancel G-code Status
  *   Options: [disable: 0, enable: 1]
  */
-#define START_GCODE_ENABLED  0  // Default: 0
-#define END_GCODE_ENABLED    0  // Default: 0
-#define CANCEL_GCODE_ENABLED 0  // Default: 0
+#define START_GCODE_ENABLED  1  // Default: 0
+#define END_GCODE_ENABLED    1  // Default: 0
+#define CANCEL_GCODE_ENABLED 1  // Default: 0
 
 /**
  * Start, End and Cancel G-code
@@ -1192,7 +1192,7 @@
 #define SHOW_BTT_BOOTSCREEN  // Default: uncommented (enabled)
 
 // Bootscreen logo time in ms
-#define BTT_BOOTSCREEN_TIME 4000  // Default: 3000
+#define BTT_BOOTSCREEN_TIME 3000  // Default: 3000
 
 /**
  * Smart Home
@@ -1207,7 +1207,7 @@
  * Enable alternative Move Menu Buttons Layout matching the direction
  * of actual printer axis Update the icons from alternate icon folder.
  */
-#define ALTERNATIVE_MOVE_MENU  // Default: uncommented (enabled)
+//#define ALTERNATIVE_MOVE_MENU  // Default: uncommented (enabled)
 
 /**
  * Friendly Z Offset Language
@@ -1245,7 +1245,7 @@
  * Terminal Keyboard / Numpad Theme
  * Uncomment to enable Material theme for keyboard and Numpad.
  */
-#define KEYBOARD_MATERIAL_THEME  // Default: uncommented (enabled)
+//#define KEYBOARD_MATERIAL_THEME  // Default: uncommented (enabled)
 
 /**
  * Terminal Keyboard / Numpad Color Layout
@@ -1354,6 +1354,6 @@
  *                    require dedicated post-processing of gcode files for most slicers.
  *                    "RGB565 bitmap" and "Classic" are used as fallback.
  */
-#define THUMBNAIL_PARSER 0  // Default: 0
+#define THUMBNAIL_PARSER 2  // Default: 0
 
 #endif
