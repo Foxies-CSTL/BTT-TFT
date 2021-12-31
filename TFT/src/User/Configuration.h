@@ -36,9 +36,9 @@
  *                P4: [min: 0, max: 9]
  *   Options: [OFF (port disabled): 0, 2400: 1, 9600: 2, 19200: 3, 38400: 4, 57600: 5, 115200: 6, 250000: 7, 500000: 8, 1000000: 9]
  */
-#define SP_1 6  // Default: 6
-#define SP_2 6  // Default: 0
-#define SP_3 6  // Default: 0
+#define SP_1 8  // Default: 6
+#define SP_2 0  // Default: 0
+#define SP_3 0  // Default: 0
 #define SP_4 0  // Default: 0
 
 /**
@@ -232,7 +232,7 @@
  *
  *   Options: [disable: 0, enable: 1]
  */
-#define NOTIFICATION_M117 1  // Default: 0
+#define NOTIFICATION_M117 0  // Default: 0
 
 /**
  * Progress Numeric Display Mode During Print
@@ -638,7 +638,7 @@
  *   Unit: [distance in mm]
  *   Value range: [min: -2000.0, max: 2000.0]
  */
-#define PROBING_Z_RAISE -50.0f  // Default: 20.0f
+#define PROBING_Z_RAISE -150.0f  // Default: 20.0f
 
 /**
  * Z Steppers Auto-Alignment (ABL)
@@ -959,7 +959,7 @@
  */
 #define START_GCODE  "M75\n"  //"G28 XY R20\n"
 #define END_GCODE    "M77\n"  //"M104 S0\nM140 S0\nM107\nM18\n"
-#define CANCEL_GCODE "G28\nM84\nM104 S0\nM140 S0\nM107\nM77\n"  //"M104 S0\nM140 S0\nG28 XY R10\nM107\nM18\n"
+#define CANCEL_GCODE "M104 S0\nM140 S0\nG28\nM107\nM18\nM77\n"
 
 //====================================================================================================
 //============================ Settings Configurable At Compile Time Only ============================
