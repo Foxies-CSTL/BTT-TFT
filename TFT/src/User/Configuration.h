@@ -299,7 +299,7 @@
  * no matter which mode the TFT is in.
  *   Options: [disable: 0, enable: 1]
  */
-#define SERIAL_ALWAYS_ON 0  // Default: 0
+#define SERIAL_ALWAYS_ON 1  // Default: 0
 
 /**
  * Marlin Mode Background & Font Colors
@@ -549,10 +549,10 @@
 #define NOZZLE_PAUSE_RETRACT_LENGTH                5.0f  // (mm) (Default: 15.0f)
 #define NOZZLE_RESUME_PURGE_LENGTH                10.0f  // (mm) (Default: 16.0f)
 #define NOZZLE_PAUSE_X_POSITION                    0.0f  // (mm) (Default: 10.0f)
-#define NOZZLE_PAUSE_Y_POSITION     (Y_MAX_POS - 30.0f)  // (mm) (Default: 10.0f)
+#define NOZZLE_PAUSE_Y_POSITION                  110.0f  // (mm) (Default: 10.0f)
 #define NOZZLE_PAUSE_Z_RAISE                      50.0f  // (mm) (Default: 10.0f)
 #define NOZZLE_PAUSE_XY_FEEDRATE                   6000  // (mm/min) X and Y axes feedrate (Default: 6000)
-#define NOZZLE_PAUSE_Z_FEEDRATE                     300  // (mm/min) Z axis feedrate (Default: 6000)
+#define NOZZLE_PAUSE_Z_FEEDRATE                     600  // (mm/min) Z axis feedrate (Default: 6000)
 #define NOZZLE_PAUSE_E_FEEDRATE                     600  // (mm/min) retract & purge feedrate (Default: 600)
 
 /**
@@ -587,7 +587,7 @@
 #define LEVELING_Z_POS          0.2f  // (mm) Z-axis position when nozzle stays for leveling (Default: 0.2f)
 #define LEVELING_Z_RAISE       10.0f  // (mm) Z-axis position when nozzle move to next point (Default: 10.0f)
 #define LEVELING_XY_FEEDRATE    3960  // (mm/min) X and Y axes move feedrate (Default: 6000)
-#define LEVELING_Z_FEEDRATE      400  // (mm/min) Z axis move feedrate (Default: 6000)
+#define LEVELING_Z_FEEDRATE     1200  // (mm/min) Z axis move feedrate (Default: 6000)
 
 /**
  * Inverted Axes (Manual Leveling, Move, Probe Offset)
@@ -785,7 +785,7 @@
  *   Unit: [distance in mm]
  *   Value range: [min: 0.0, max: 2000.0]
  */
-#define PL_RECOVERY_Z_RAISE 10.0f  // Default: 10.0f
+#define PL_RECOVERY_Z_RAISE 0.0f  // Default: 10.0f
 
 /**
  * BTT Mini UPS Support
@@ -875,7 +875,7 @@
  * Greater than 0 means the number of LEDs in the strip.
  *   Value range: [min: 0, max: 200]
  */
-//#define NEOPIXEL_PIXELS 0  // Default: commented (use default value for TFT variant).
+#define NEOPIXEL_PIXELS 0  // Default: commented (use default value for TFT variant).
                              // Uncomment it to override default value for TFT variant
 
 //================================================================================
@@ -1331,7 +1331,7 @@
  *     1: apply icon background colors to live text
  *     2: apply sampled icon background uniform color to live text
  */
-#define LIVE_TEXT_BG_COLOR_PRINTING 0  // Default: 0 (disabled)
+#define LIVE_TEXT_BG_COLOR_PRINTING 2  // Default: 0 (disabled)
 
 /**
  * Live Text Background Color Rendering Technique (Status Screen menu)
@@ -1344,7 +1344,7 @@
  *     5: apply icon background colors to both live text 1 and live text 2
  *     6: apply sampled icon background uniform color to both live text 1 and live text 2
  */
-#define LIVE_TEXT_BG_COLOR_STATUS 0  // Default: 0 (disabled)
+#define LIVE_TEXT_BG_COLOR_STATUS 6  // Default: 0 (disabled)
 
 /**
  * Show Embedded Thumbnails Of Gcode Files
