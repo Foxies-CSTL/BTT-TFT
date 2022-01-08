@@ -75,7 +75,7 @@
  *
  *   Options: [disable: 0, enable: 1]
  */
-#define EVENT_LED 1  // Default: 1
+#define EVENT_LED 0  // Default: 1
 
 /**
  * G-code File Comment Parsing
@@ -189,7 +189,7 @@
  * Display files in list mode instead of icon mode.
  *   Options: [disable: 0, enable: 1]
  */
-#define FILES_LIST_MODE 1  // Default: 1
+#define FILES_LIST_MODE 0  // Default: 1
 
 /**
  * Filename Extension
@@ -552,7 +552,7 @@
 #define NOZZLE_PAUSE_Y_POSITION                  110.0f  // (mm) (Default: 10.0f)
 #define NOZZLE_PAUSE_Z_RAISE                      50.0f  // (mm) (Default: 10.0f)
 #define NOZZLE_PAUSE_XY_FEEDRATE                   6000  // (mm/min) X and Y axes feedrate (Default: 6000)
-#define NOZZLE_PAUSE_Z_FEEDRATE                     600  // (mm/min) Z axis feedrate (Default: 6000)
+#define NOZZLE_PAUSE_Z_FEEDRATE                    1600  // (mm/min) Z axis feedrate (Default: 6000)
 #define NOZZLE_PAUSE_E_FEEDRATE                     600  // (mm/min) retract & purge feedrate (Default: 600)
 
 /**
@@ -824,7 +824,7 @@
  * Brightness levels for LCD.
  *   Options: [OFF: 0, 5%: 1, 10%: 2, 20%: 3, 30%: 4, 40%: 5, 50%: 6, 60%: 7, 70%: 8, 80%: 9, 90%: 10, 100%: 11]
  */
-#define LCD_BRIGHTNESS       9  // LCD brightness level (Default: 11)
+#define LCD_BRIGHTNESS       3  // LCD brightness level (Default: 11)
 #define LCD_IDLE_BRIGHTNESS  5  // LCD brightness level when device is idle (Default: 5)
 
 /**
@@ -894,27 +894,28 @@
  *
  *   Value range: label: [min: 3, max: 75 characters]
  *                G-code: [min: 3, max: 75 characters]
- */
-#define CUSTOM_0_LABEL "Init.EEPROM"
-#define CUSTOM_0_GCODE "M502\nM500\nM997\n"
-#define CUSTOM_1_LABEL "Fast Calib.Delta"
-#define CUSTOM_1_GCODE "G33 P3 V3\nM500\nM140 S0\n"
-#define CUSTOM_2_LABEL "Fine Calib.Delta"
-#define CUSTOM_2_GCODE "G33 P5 V3\nM500\nM140 S0\n"
-#define CUSTOM_3_LABEL "0.BedLevel.UBL (PLA)"
-#define CUSTOM_3_GCODE "M1004 H0 B60 S0\n"
-#define CUSTOM_4_LABEL "0.RunPIDNozzlefor (PLA)"
-#define CUSTOM_4_GCODE "M106 P0 S180\nM303 E0 C8 S210 U\nM500\nG28\nM107\n"
-#define CUSTOM_5_LABEL "0.PrintTestPattern in PLA"
-#define CUSTOM_5_GCODE "G28W\nG29 L0\nG26 I0 P4\nM500\nG28W"
-#define CUSTOM_6_LABEL "1.BedLevel.UBL for PETG"
-#define CUSTOM_6_GCODE "M1004 H0 B80 S0\n"
-#define CUSTOM_7_LABEL "2.BedLevel.UBL for ABS"
-#define CUSTOM_7_GCODE "M1004 H0 B90 S0\n"
-#define CUSTOM_8_LABEL "Reboot Printer"
-#define CUSTOM_8_GCODE "M997\n"
-//#define CUSTOM_LABEL_7 "Custom7"
-//#define CUSTOM_GCODE_7 "M105\n"
+  */
+//#define CUSTOM_LABEL_0 "Disable Steppers"
+#define CUSTOM_LABEL_0 "Init.EEPROM"
+#define CUSTOM_GCODE_0 "M502\nM500\nM997\n"
+#define CUSTOM_LABEL_1 "Fast Calib.Delta"
+#define CUSTOM_GCODE_1 "G33 P3 V3\nM500\nM140 S0\n"
+#define CUSTOM_LABEL_2 "Fine Calib.Delta"
+#define CUSTOM_GCODE_2 "G33 P5 V3\nM500\nM140 S0\n"
+#define CUSTOM_LABEL_3 "0.BedLevel.UBL (PLA)"
+#define CUSTOM_GCODE_3 "M1004 H0 B60 S0\n"
+#define CUSTOM_LABEL_4 "0.RunPIDNozzlefor (PLA)"
+#define CUSTOM_GCODE_4 "M106 P0 S180\nM303 E0 C8 S210 U\nM500\nG28\nM107\n"
+#define CUSTOM_LABEL_5 "0.PrintTestPattern in PLA"
+#define CUSTOM_GCODE_5 "G28W\nG29 L0\nG26 I0 P4\nM500\nG28W"
+#define CUSTOM_LABEL_6 "1.BedLevel.UBL for PETG"
+#define CUSTOM_GCODE_6 "M1004 H0 B80 S0\n"
+#define CUSTOM_LABEL_7 "2.BedLevel.UBL for ABS"
+#define CUSTOM_GCODE_7 "M1004 H0 B90 S0\n"
+#define CUSTOM_LABEL_8 "Reboot Printer"
+#define CUSTOM_GCODE_8 "M997\n"
+#define CUSTOM_LABEL_9 "Disable steppers"
+#define CUSTOM_GCODE_9 "M84\n"
 //#define CUSTOM_LABEL_8 "Custom8"
 //#define CUSTOM_GCODE_8 "M105\n"
 //#define CUSTOM_LABEL_9 "Custom9"
@@ -1052,7 +1053,7 @@
                         "M710 S%d\n",    "M710 I%d\n" }
 
 // Speed/flow rate names displayed in status screen
-#define SPEED_ID {"Vit.", "Rat."}  // (speed, flow rate)
+#define SPEED_ID {"Speed", "Flow"}  // (speed, flow rate)
 
 // Axes names displayed in Parameter Settings menu
 #define AXIS_DISPLAY_ID    {"X", "Y", "Z", "E0", "E1"}                    // (X, Y, Z, E0, E1)
@@ -1066,18 +1067,18 @@
 #define LEVELING_EDGE_DISTANCE_DEFAULT    LEVELING_EDGE_DISTANCE  // Default: LEVELING_EDGE_DISTANCE
 
 // Z Fade limits
-#define Z_FADE_MIN_VALUE      0.0f  // Default: 0.0f
-#define Z_FADE_MAX_VALUE     20.0f  // Default: 20.0f
+#define Z_FADE_MIN_VALUE      0.1f  // Default: 0.0f
+#define Z_FADE_MAX_VALUE     10.0f  // Default: 20.0f
 #define Z_FADE_DEFAULT_VALUE 10.0f  // Default: 10.0f
 
 // Probe Offset limits
 #define PROBE_Z_OFFSET_MIN_VALUE     -30.0f  // Default: -20.0f
 #define PROBE_Z_OFFSET_MAX_VALUE      20.0f  // Default: 20.0f
-#define PROBE_Z_OFFSET_DEFAULT_VALUE   0.0f  // Default: 0.0f
+#define PROBE_Z_OFFSET_DEFAULT_VALUE  16.2f  // Default: 0.0f
 
 // Home Offset limits
-#define HOME_Z_OFFSET_MIN_VALUE     -20.0f  // Default: -20.0f
-#define HOME_Z_OFFSET_MAX_VALUE      20.0f  // Default: 20.0f
+#define HOME_Z_OFFSET_MIN_VALUE     -10.0f  // Default: -20.0f
+#define HOME_Z_OFFSET_MAX_VALUE      10.0f  // Default: 20.0f
 #define HOME_Z_OFFSET_DEFAULT_VALUE   0.0f  // Default: 0.0f
 
 // Babystep limits
@@ -1114,7 +1115,7 @@
  * If not enabled, you can set the desired starting Z height
  * in Marlin fw (MANUAL_PROBE_START_Z in Configuration.h).
  */
-//#define MBL_START_Z  // Default: uncommented (enabled)
+#define MBL_START_Z  // Default: uncommented (enabled)
 
 /**
  * M601: Pause Print
@@ -1154,7 +1155,7 @@
  *             SPANISH,    FRENCH,   PORTUGUESE,  ITALIAN,    POLISH,    SLOVAK,        DUTCH,
  *             HUNGARIAN,  TURKISH,  GREEK,       SLOVENIAN,  CATALAN,   TRAD_CHINESE,  UKRAINIAN]
  */
-#define SYSTEM_LANGUAGE ENGLISH  // Default: ENGLISH
+#define SYSTEM_LANGUAGE FRENCH//ENGLISH  // Default: ENGLISH
 
 /**
  * Rapid Serial Communication
@@ -1257,7 +1258,7 @@
  * Terminal Keyboard / Numpad Theme
  * Uncomment to enable Material theme for keyboard and Numpad.
  */
-//#define KEYBOARD_MATERIAL_THEME  // Default: uncommented (enabled)
+#define KEYBOARD_MATERIAL_THEME  // Default: uncommented (enabled)
 
 /**
  * Terminal Keyboard / Numpad Color Layout
@@ -1302,7 +1303,7 @@
  * (e.g. for THEME_Rep Rap Firmware Dark theme).
  * Comment to use standard colors.
  */
-#define LIVE_TEXT_COMMON_COLOR  // Default: commented (disabled)
+//#define LIVE_TEXT_COMMON_COLOR  // Default: commented (disabled)
 
 /**
  * Live Text Background Color Rendering Technique (Printing menu and Status Screen menu)
@@ -1331,7 +1332,7 @@
  *     1: apply icon background colors to live text
  *     2: apply sampled icon background uniform color to live text
  */
-#define LIVE_TEXT_BG_COLOR_PRINTING 2  // Default: 0 (disabled)
+#define LIVE_TEXT_BG_COLOR_PRINTING 0  // Default: 0 (disabled)
 
 /**
  * Live Text Background Color Rendering Technique (Status Screen menu)
@@ -1344,7 +1345,7 @@
  *     5: apply icon background colors to both live text 1 and live text 2
  *     6: apply sampled icon background uniform color to both live text 1 and live text 2
  */
-#define LIVE_TEXT_BG_COLOR_STATUS 6  // Default: 0 (disabled)
+#define LIVE_TEXT_BG_COLOR_STATUS 0  // Default: 0 (disabled)
 
 /**
  * Show Embedded Thumbnails Of Gcode Files
