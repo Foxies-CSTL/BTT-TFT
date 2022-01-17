@@ -584,7 +584,7 @@
  *   Value range: [min: 10, max: 12000]
  */
 #define LEVELING_EDGE_DISTANCE    10  // (mm) Inset distance from bed's edge for calculating leveling point location (Default: 20)
-#define LEVELING_Z_POS          0.2f  // (mm) Z-axis position when nozzle stays for leveling (Default: 0.2f)
+#define LEVELING_Z_POS          5.0f  // (mm) Z-axis position when nozzle stays for leveling (Default: 0.2f)
 #define LEVELING_Z_RAISE       10.0f  // (mm) Z-axis position when nozzle move to next point (Default: 10.0f)
 #define LEVELING_XY_FEEDRATE    3960  // (mm/min) X and Y axes move feedrate (Default: 6000)
 #define LEVELING_Z_FEEDRATE     1200  // (mm/min) Z axis move feedrate (Default: 6000)
@@ -621,7 +621,7 @@
  *     printer specific configuration).
  *   - Disable it (preferably) in case Marlin firmware is configured to use the probe for Z axis
  *     homing (e.g. USE_PROBE_FOR_Z_HOMING enabled in Marlin firmware).
- *   - Delta 
+ *   - Delta disable it.
  *   Options: [disable: 0, enable: 1]
  */
 #define PROBING_Z_OFFSET 0  // Default: 1
@@ -638,7 +638,7 @@
  *   Unit: [distance in mm]
  *   Value range: [min: -2000.0, max: 2000.0]
  */
-#define PROBING_Z_RAISE -150.0f  // Default: 20.0f
+#define PROBING_Z_RAISE -100.0f  // Default: 20.0f
 
 /**
  * Z Steppers Auto-Alignment (ABL)
