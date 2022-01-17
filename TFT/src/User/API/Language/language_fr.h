@@ -268,7 +268,7 @@
     #define STRING_POINT_3                "Point 3"
     #define STRING_POINT_4                "Point 4"
     #define STRING_POINT_5                "Point 5"
-    #define STRING_BED_LEVELING           "Nivellement"
+    #define STRING_BED_LEVELING           "Nivel.Δ"
     #define STRING_BL_COMPLETE            "Nivellement terminé"
     #define STRING_BL_SMART_FILL          "Les points de sonde manquants ont été intelligemment remplis.\n\nNote : n'oubliez pas de sauvegarder !"
     #define STRING_BL_ENABLE              "BL On"
@@ -363,6 +363,6 @@
     #define STRING_MESH_VALID             "Test Mesh"
     #define STRING_CONNECT_PROBE          "Connectez le capteur avant de démarrer le processus. Veillez à le déconnecter ensuite."
     #define STRING_DISCONNECT_PROBE       "Assurez-vous d'avoir déconnecté le capteur avant d'utiliser cette fonctionnalité."
-    #define STRING_CALIBRATION            "Calibrate"
+    #define STRING_CALIBRATION            "Calib.Δ"
 
 #endif

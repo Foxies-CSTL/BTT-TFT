@@ -584,7 +584,7 @@
  *   Value range: [min: 10, max: 12000]
  */
 #define LEVELING_EDGE_DISTANCE    10  // (mm) Inset distance from bed's edge for calculating leveling point location (Default: 20)
-#define LEVELING_Z_POS          5.0f  // (mm) Z-axis position when nozzle stays for leveling (Default: 0.2f)
+#define LEVELING_Z_POS         0.2f  // (mm) Z-axis position when nozzle stays for leveling (Default: 0.2f)
 #define LEVELING_Z_RAISE       10.0f  // (mm) Z-axis position when nozzle move to next point (Default: 10.0f)
 #define LEVELING_XY_FEEDRATE    3960  // (mm/min) X and Y axes move feedrate (Default: 6000)
 #define LEVELING_Z_FEEDRATE     1200  // (mm/min) Z axis move feedrate (Default: 6000)
@@ -1077,8 +1077,8 @@
 #define PROBE_Z_OFFSET_DEFAULT_VALUE  16.2f  // Default: 0.0f
 
 // Home Offset limits
-#define HOME_Z_OFFSET_MIN_VALUE     -10.0f  // Default: -20.0f
-#define HOME_Z_OFFSET_MAX_VALUE      10.0f  // Default: 20.0f
+#define HOME_Z_OFFSET_MIN_VALUE       0.0f  // Default: -20.0f
+#define HOME_Z_OFFSET_MAX_VALUE       0.0f  // Default: 20.0f
 #define HOME_Z_OFFSET_DEFAULT_VALUE   0.0f  // Default: 0.0f
 
 // Babystep limits
@@ -1114,8 +1114,9 @@
  * starting Z height for each point during MBL process.
  * If not enabled, you can set the desired starting Z height
  * in Marlin fw (MANUAL_PROBE_START_Z in Configuration.h).
+ * - Delta enable it.
  */
-//#define MBL_START_Z  // Default: uncommented (enabled)
+#define MBL_START_Z  // Default: uncommented (enabled)
 
 /**
  * M601: Pause Print
@@ -1199,7 +1200,7 @@
  * Buzzer pin state when buzzer is idle or no sound is playing.
  *   Options: [HIGH, LOW]
  */
-#define BUZZER_STOP_LEVEL LOW  // Default: LOW
+#define BUZZER_STOP_LEVEL HIGH  // Default: LOW
 
 // Show bootscreen when starting up
 #define SHOW_BTT_BOOTSCREEN  // Default: uncommented (enabled)
@@ -1220,7 +1221,7 @@
  * Enable alternative Move Menu Buttons Layout matching the direction
  * of actual printer axis Update the icons from alternate icon folder.
  */
-//#define ALTERNATIVE_MOVE_MENU  // Default: uncommented (enabled)
+#define ALTERNATIVE_MOVE_MENU  // Default: uncommented (enabled)
 
 /**
  * Friendly Z Offset Language
@@ -1234,6 +1235,7 @@
  *
  * NOTE: If disabled, EEPROM operations can also be accessed in
  *       Settings -> Machine -> Parameter Settings menu.
+ * - Delta enable it.
  */
 #define QUICK_EEPROM_BUTTON  // Default: uncommented (enabled)
 
@@ -1345,7 +1347,7 @@
  *     5: apply icon background colors to both live text 1 and live text 2
  *     6: apply sampled icon background uniform color to both live text 1 and live text 2
  */
-#define LIVE_TEXT_BG_COLOR_STATUS 1  // Default: 0 (disabled)
+#define LIVE_TEXT_BG_COLOR_STATUS 5  // Default: 0 (disabled)
 
 /**
  * Show Embedded Thumbnails Of Gcode Files
