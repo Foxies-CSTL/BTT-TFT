@@ -111,7 +111,7 @@
  *
  *   Options: [Primary Language (english): 0, Secondary Language: 1]
  */
-#define LANGUAGE 0  // Default: 0
+#define LANGUAGE 1  // Default: 0
 
 /**
  * Status Screen
@@ -547,7 +547,7 @@
  *   Value range: [min: 10, max: 12000]
  */
 #define NOZZLE_PAUSE_RETRACT_LENGTH                5.0f  // (mm) (Default: 15.0f)
-#define NOZZLE_RESUME_PURGE_LENGTH                 5.0f  // (mm) (Default: 16.0f)
+#define NOZZLE_RESUME_PURGE_LENGTH                 3.0f  // (mm) (Default: 16.0f)
 #define NOZZLE_PAUSE_X_POSITION                    0.0f  // (mm) (Default: 10.0f)
 #define NOZZLE_PAUSE_Y_POSITION                  110.0f  // (mm) (Default: 10.0f)
 #define NOZZLE_PAUSE_Z_RAISE                      50.0f  // (mm) (Default: 10.0f)
@@ -1115,7 +1115,7 @@
  * If not enabled, you can set the desired starting Z height
  * in Marlin fw (MANUAL_PROBE_START_Z in Configuration.h).
  */
-#define MBL_START_Z  // Default: uncommented (enabled)
+//#define MBL_START_Z  // Default: uncommented (enabled)
 
 /**
  * M601: Pause Print
@@ -1155,7 +1155,7 @@
  *             SPANISH,    FRENCH,   PORTUGUESE,  ITALIAN,    POLISH,    SLOVAK,        DUTCH,
  *             HUNGARIAN,  TURKISH,  GREEK,       SLOVENIAN,  CATALAN,   TRAD_CHINESE,  UKRAINIAN]
  */
-#define SYSTEM_LANGUAGE FRENCH//ENGLISH  // Default: ENGLISH
+#define SYSTEM_LANGUAGE ENGLISH  // Default: ENGLISH
 
 /**
  * Rapid Serial Communication
@@ -1303,7 +1303,7 @@
  * (e.g. for THEME_Rep Rap Firmware Dark theme).
  * Comment to use standard colors.
  */
-//#define LIVE_TEXT_COMMON_COLOR  // Default: commented (disabled)
+#define LIVE_TEXT_COMMON_COLOR  // Default: commented (disabled)
 
 /**
  * Live Text Background Color Rendering Technique (Printing menu and Status Screen menu)
@@ -1332,7 +1332,7 @@
  *     1: apply icon background colors to live text
  *     2: apply sampled icon background uniform color to live text
  */
-#define LIVE_TEXT_BG_COLOR_PRINTING 0  // Default: 0 (disabled)
+#define LIVE_TEXT_BG_COLOR_PRINTING 1  // Default: 0 (disabled)
 
 /**
  * Live Text Background Color Rendering Technique (Status Screen menu)
@@ -1345,7 +1345,7 @@
  *     5: apply icon background colors to both live text 1 and live text 2
  *     6: apply sampled icon background uniform color to both live text 1 and live text 2
  */
-#define LIVE_TEXT_BG_COLOR_STATUS 0  // Default: 0 (disabled)
+#define LIVE_TEXT_BG_COLOR_STATUS 1  // Default: 0 (disabled)
 
 /**
  * Show Embedded Thumbnails Of Gcode Files
@@ -1367,6 +1367,6 @@
  *                    require dedicated post-processing of gcode files for most slicers.
  *                    "RGB565 bitmap" and "Classic" are used as fallback.
  */
-#define THUMBNAIL_PARSER 0  // Default: 0
+#define THUMBNAIL_PARSER 2  // Default: 0
 
 #endif

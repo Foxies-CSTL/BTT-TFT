@@ -115,7 +115,7 @@
     #define STRING_ZERO                   "Zero"
     #define STRING_HALF                   "Half"
     #define STRING_FULL                   "Full"
-    #define STRING_CUSTOM                 "Custom"
+    #define STRING_CUSTOM                 "SpecialΔ"
     #define STRING_CLEAR                  "Clear"
     #define STRING_DEFAULT                "Default"
 
@@ -317,7 +317,7 @@
     #define STRING_ADJUST_INFO            "Please click on the red dot"
     #define STRING_ADJUST_OK              "Adjustment success"
     #define STRING_ADJUST_FAILED          "Adjustment failed, please try again."
-    #define STRING_UNIFIEDMOVE            "Movement"
+    #define STRING_UNIFIEDMOVE            "Prepare"
     #define STRING_UNIFIEDHEAT            "Heat/Fan"
     #define STRING_TOUCH_TO_EXIT          "Touch anywhere to exit"
     #define STRING_MAINMENU               "Menu"
