@@ -36,7 +36,7 @@
  *                P4: [min: 0, max: 9]
  *   Options: [OFF (port disabled): 0, 2400: 1, 9600: 2, 19200: 3, 38400: 4, 57600: 5, 115200: 6, 250000: 7, 500000: 8, 1000000: 9]
  */
-#define SP_1 8  // Default: 6
+#define SP_1 7  // Default: 6
 #define SP_2 0  // Default: 0
 #define SP_3 0  // Default: 0
 #define SP_4 0  // Default: 0
@@ -75,7 +75,7 @@
  *
  *   Options: [disable: 0, enable: 1]
  */
-#define EVENT_LED 0  // Default: 1
+#define EVENT_LED 1  // Default: 1
 
 /**
  * G-code File Comment Parsing
@@ -111,7 +111,7 @@
  *
  *   Options: [Primary Language (english): 0, Secondary Language: 1]
  */
-#define LANGUAGE 1  // Default: 0
+#define LANGUAGE 0  // Default: 0
 
 /**
  * Status Screen
@@ -141,7 +141,7 @@
 #define MENU_FONT_COLOR         0  // Menu font color (Default: 0)
 #define REMINDER_FONT_COLOR     2  // Reminder font color, such as: "No print attached", "Busy processing", etc (Default: 2)
 #define STATUS_FONT_COLOR       5  // Status (e.g. volume reminder, ABL probing point etc...) font color, such as: "Card inserted", "Card removed" (Default: 5)
-#define STATUS_XYZ_BG_COLOR    15  // Backgroud color for X Y Z position display in Status Screen menu (Default: 15)
+#define STATUS_XYZ_BG_COLOR    13  // Backgroud color for X Y Z position display in Status Screen menu (Default: 15)
 #define LIST_BORDER_COLOR      15  // List View border color (Default: 15)
 #define LIST_BUTTON_BG_COLOR   15  // List View button background color (Default: 15)
 
@@ -172,7 +172,7 @@
  *     POPUP: Display a popup window for user confirmation.
  *     TOAST: A non-blocking Toast notification is displayed for few seconds. No user interaction is needed.
  */
-#define ACK_NOTIFICATION 2  // Default: 1
+#define ACK_NOTIFICATION 1  // Default: 1
 
 /**
  * Files Sorting
@@ -211,7 +211,7 @@
  * Show persistent temperature info in all menus.
  *   Options: [disable: 0, enable: 1]
  */
-#define PERSISTENT_INFO 1  // Default: 0
+#define PERSISTENT_INFO 0  // Default: 0
 
 /**
  * Temperature ACK In Terminal
@@ -274,7 +274,7 @@
  *
  *   Options: [Layer height: 0, Layer number: 1, Both - height & number: 2]
  */
-#define LAYER_DISP_TYPE 2  // Default: 0
+#define LAYER_DISP_TYPE 0  // Default: 0
 
 //================================================================================
 //============================= Marlin Mode Settings =============================
@@ -637,8 +637,9 @@
  *
  *   Unit: [distance in mm]
  *   Value range: [min: -2000.0, max: 2000.0]
+ * Position Delta apres ajustement = 0
  */
-#define PROBING_Z_RAISE -100.0f  // Default: 20.0f
+#define PROBING_Z_RAISE 0.0f  // Default: 20.0f
 
 /**
  * Z Steppers Auto-Alignment (ABL)
@@ -817,14 +818,14 @@
 #define TOUCH_SOUND  1  // Default: 1
 #define TOAST_SOUND  0  // Default: 1
 #define ALERT_SOUND  1  // Default: 1
-#define HEATER_SOUND 0  // Default: 1
+#define HEATER_SOUND 1  // Default: 1
 
 /**
  * LCD Brightness Levels (only for TFT28/TFT35/TFT43/TFT50/TFT70 V3.0)
  * Brightness levels for LCD.
  *   Options: [OFF: 0, 5%: 1, 10%: 2, 20%: 3, 30%: 4, 40%: 5, 50%: 6, 60%: 7, 70%: 8, 80%: 9, 90%: 10, 100%: 11]
  */
-#define LCD_BRIGHTNESS       3  // LCD brightness level (Default: 11)
+#define LCD_BRIGHTNESS      11  // LCD brightness level (Default: 11)
 #define LCD_IDLE_BRIGHTNESS  5  // LCD brightness level when device is idle (Default: 5)
 
 /**
@@ -856,7 +857,7 @@
  * Knob LED color at startup.
  *   Options: [OFF: 0, WHITE: 1, RED: 2, ORANGE: 3, YELLOW: 4, GREEN: 5, BLUE: 6, INDIGO: 7, VIOLET: 8]
  */
-#define KNOB_LED_COLOR 0  // Default: 1
+#define KNOB_LED_COLOR 5  // Default: 1
 
 // Keep the LED state in Marlin Mode
 #define KEEP_KNOB_LED_COLOR_MARLIN_MODE  // Default: uncommented (enabled)
@@ -875,7 +876,7 @@
  * Greater than 0 means the number of LEDs in the strip.
  *   Value range: [min: 0, max: 200]
  */
-#define NEOPIXEL_PIXELS 0  // Default: commented (use default value for TFT variant).
+//#define NEOPIXEL_PIXELS 0  // Default: commented (use default value for TFT variant).
                              // Uncomment it to override default value for TFT variant
 
 //================================================================================
@@ -902,9 +903,9 @@
 #define CUSTOM_GCODE_1 "G33 P3 V3\nM500\nM140 S0\n"
 #define CUSTOM_LABEL_2 "Fine Calib.Delta"
 #define CUSTOM_GCODE_2 "G33 P5 V3\nM500\nM140 S0\n"
-#define CUSTOM_LABEL_3 "0.BedLevel.UBL (PLA)"
+#define CUSTOM_LABEL_3 "0.BedLevel.UBL(PLA)"
 #define CUSTOM_GCODE_3 "M1004 H0 B60 S0\n"
-#define CUSTOM_LABEL_4 "0.RunPIDNozzlefor (PLA)"
+#define CUSTOM_LABEL_4 "0.Run_PIDNozzlefor PLA"
 #define CUSTOM_GCODE_4 "M106 P0 S180\nM303 E0 C8 S210 U\nM500\nG28\nM107\n"
 #define CUSTOM_LABEL_5 "0.PrintTestPattern in PLA"
 #define CUSTOM_GCODE_5 "G28W\nG29 L0\nG26 I0 P4\nM500\nG28W"
@@ -914,10 +915,15 @@
 #define CUSTOM_GCODE_7 "M1004 H0 B90 S0\n"
 #define CUSTOM_LABEL_8 "Reboot Printer"
 #define CUSTOM_GCODE_8 "M997\n"
-#define CUSTOM_LABEL_9 "Disable steppers"
-#define CUSTOM_GCODE_9 "M84\n"
-//#define CUSTOM_LABEL_8 "Custom8"
-//#define CUSTOM_GCODE_8 "M105\n"
+#define CUSTOM_LABEL_9 "UnLoad Filament (220C°)"
+#define CUSTOM_GCODE_9 "G28W\nG1 X0 Y-125 Z50\nM109 S220\nM702 L800\nM109 S0\nG28W\nM104 S0\n"
+#define CUSTOM_LABEL_11 "Load Filament (220C°)"
+#define CUSTOM_GCODE_11 "G28W\nG1 X0 Y-125 Z50\nM109 S220\nM701 L550\nM109 S0\nG28W\nM104 S0\n"
+//#define CUSTOM_LABEL_12 "Change Filament"
+//#define CUSTOM_GCODE_12 "G28W\nG1 X0 Y-125 Z50\nM109 S220\nM600 X0 Y-125 Z50\nM109 S0\nG28W\nM104 S0\n"
+
+
+
 //#define CUSTOM_LABEL_9 "Custom9"
 //#define CUSTOM_GCODE_9 "M105\n"
 //#define CUSTOM_LABEL_10 "Custom10"
@@ -1053,7 +1059,7 @@
                         "M710 S%d\n",    "M710 I%d\n" }
 
 // Speed/flow rate names displayed in status screen
-#define SPEED_ID {"Speed", "Flow"}  // (speed, flow rate)
+#define SPEED_ID {"Spd", "Flow"}  // (speed, flow rate)
 
 // Axes names displayed in Parameter Settings menu
 #define AXIS_DISPLAY_ID    {"X", "Y", "Z", "E0", "E1"}                    // (X, Y, Z, E0, E1)
@@ -1067,12 +1073,12 @@
 #define LEVELING_EDGE_DISTANCE_DEFAULT    LEVELING_EDGE_DISTANCE  // Default: LEVELING_EDGE_DISTANCE
 
 // Z Fade limits
-#define Z_FADE_MIN_VALUE      0.1f  // Default: 0.0f
+#define Z_FADE_MIN_VALUE      0.0f  // Default: 0.0f
 #define Z_FADE_MAX_VALUE     10.0f  // Default: 20.0f
 #define Z_FADE_DEFAULT_VALUE 10.0f  // Default: 10.0f
 
 // Probe Offset limits
-#define PROBE_Z_OFFSET_MIN_VALUE     -30.0f  // Default: -20.0f
+#define PROBE_Z_OFFSET_MIN_VALUE     -20.0f  // Default: -20.0f
 #define PROBE_Z_OFFSET_MAX_VALUE      20.0f  // Default: 20.0f
 #define PROBE_Z_OFFSET_DEFAULT_VALUE  16.2f  // Default: 0.0f
 
@@ -1114,9 +1120,9 @@
  * starting Z height for each point during MBL process.
  * If not enabled, you can set the desired starting Z height
  * in Marlin fw (MANUAL_PROBE_START_Z in Configuration.h).
- * - Delta enable it.
+ * - Delta: Disable => MANUAL_PROBE_START_Z=0.2.
  */
-#define MBL_START_Z  // Default: uncommented (enabled)
+//#define MBL_START_Z  // Default: uncommented (enabled)
 
 /**
  * M601: Pause Print
@@ -1200,7 +1206,7 @@
  * Buzzer pin state when buzzer is idle or no sound is playing.
  *   Options: [HIGH, LOW]
  */
-#define BUZZER_STOP_LEVEL HIGH  // Default: LOW
+#define BUZZER_STOP_LEVEL LOW  // Default: LOW
 
 // Show bootscreen when starting up
 #define SHOW_BTT_BOOTSCREEN  // Default: uncommented (enabled)
@@ -1221,7 +1227,7 @@
  * Enable alternative Move Menu Buttons Layout matching the direction
  * of actual printer axis Update the icons from alternate icon folder.
  */
-#define ALTERNATIVE_MOVE_MENU  // Default: uncommented (enabled)
+//#define ALTERNATIVE_MOVE_MENU  // Default: uncommented (enabled)
 
 /**
  * Friendly Z Offset Language
@@ -1305,7 +1311,7 @@
  * (e.g. for THEME_Rep Rap Firmware Dark theme).
  * Comment to use standard colors.
  */
-#define LIVE_TEXT_COMMON_COLOR  // Default: commented (disabled)
+//#define LIVE_TEXT_COMMON_COLOR  // Default: commented (disabled)
 
 /**
  * Live Text Background Color Rendering Technique (Printing menu and Status Screen menu)
@@ -1334,7 +1340,7 @@
  *     1: apply icon background colors to live text
  *     2: apply sampled icon background uniform color to live text
  */
-#define LIVE_TEXT_BG_COLOR_PRINTING 1  // Default: 0 (disabled)
+#define LIVE_TEXT_BG_COLOR_PRINTING 2  // Default: 0 (disabled)
 
 /**
  * Live Text Background Color Rendering Technique (Status Screen menu)
@@ -1347,7 +1353,7 @@
  *     5: apply icon background colors to both live text 1 and live text 2
  *     6: apply sampled icon background uniform color to both live text 1 and live text 2
  */
-#define LIVE_TEXT_BG_COLOR_STATUS 5  // Default: 0 (disabled)
+#define LIVE_TEXT_BG_COLOR_STATUS 0  // Default: 0 (disabled)
 
 /**
  * Show Embedded Thumbnails Of Gcode Files
