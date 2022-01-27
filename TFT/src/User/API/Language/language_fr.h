@@ -11,7 +11,7 @@
     #define STRING_ACK_NOTIFICATION       "Style de notification ACK"
     #define STRING_FILES_SORT_BY          "Trier les fichiers par"
     #define STRING_FILES_LIST_MODE        "Fichiers en mode liste"
-    #define STRING_FILENAME_EXTENSION     "Montrer l'extension des fichiers"
+    #define STRING_FILENAME_EXTENSION     "Montrer l'ext. des fichiers"
     #define STRING_FAN_SPEED_PERCENTAGE   "Vitesse ventilateur en %"
     #define STRING_PERSISTENT_INFO        "Temp. toujours affichées"
     #define STRING_TERMINAL_ACK           "Afficher ACK sur Terminal"
@@ -160,17 +160,18 @@
     #define STRING_PROCESS_COMPLETED      "Processus terminé!"
     #define STRING_PROCESS_ABORTED        "Processus annulé!"
 
-    // TFT SD, U_DISK, Onboard SD, Filament Runout Process Commands / Status / Info
+    // TFT SD, USB Disk, Onboard SD, Filament Runout Process Commands / Status / Info
     #define STRING_TFTSD                  "µSD_TFT"
     #define STRING_READ_TFTSD_ERROR       "Erreur de lecture de la carte SD TFT!"
     #define STRING_TFTSD_INSERTED         "µSD insérée sur TFT!"
     #define STRING_TFTSD_REMOVED          "µSD retirée sur TFT!"
     #define STRING_TFTSD_NOT_DETECTED     "Pas de µSD détectée."
-    #define STRING_U_DISK                 "Clé USB"
-    #define STRING_READ_U_DISK_ERROR      "Erreur de lecture de la clé USB!"
-    #define STRING_U_DISK_INSERTED        "Clé USB insérée sur TFT!"
-    #define STRING_U_DISK_REMOVED         "Clé USB retirée sur TFT!"
-    #define STRING_ONBOARDSD              "µSD_int."
+    #define STRING_USB_DISK               "Clé USB"
+    #define STRING_READ_USB_DISK_ERROR    "Erreur de lecture de la clé USB!"
+    #define STRING_USB_DISK_INSERTED      "Clé USB insérée sur TFT!"
+    #define STRING_USB_DISK_REMOVED       "Clé USB retirée sur TFT!"
+    #define STRING_USB_DISK_NOT_DETECTED  "No USB Disk detected."
+    #define STRING_ONBOARDSD              "SD interne"
     #define STRING_READ_ONBOARDSD_ERROR   "Erreur de lecture de la µSD interne!"
     #define STRING_FILAMENT_RUNOUT        "Fin de Filament!"
 
