@@ -809,7 +809,7 @@ void menuTerminalWindow(void)
       if (info.codePoint == 0x5 || info.codePoint == 0x6)
         src = info.codePoint - 0x5;
 
-      // Next Line
+      // check next line
       if (cursorX + info.pixelWidth > terminalAreaRect[0].x1 ||
           (terminalBuf[bufIndex] == '\n' && cursorX != CURSOR_START_X))
       {

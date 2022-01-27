@@ -171,7 +171,7 @@ void menuBeforePrinting(void)
         break;
       }
 
-    case TFT_UDISK:
+    case TFT_USB_DISK:
     case TFT_SD:  // GCode from file on TFT SD
       {
         FIL file;
@@ -564,7 +564,7 @@ void menuPrinting(void)
       {ICON_NULL,                    LABEL_NULL},
       {ICON_NULL,                    LABEL_NULL},
       {ICON_NULL,                    LABEL_NULL},
-      {ICON_NULL,                LABEL_BABYSTEP},
+      {ICON_NULL,                    LABEL_BABYSTEP},
       {ICON_MORE,                    LABEL_MORE},
       {ICON_STOP,                    LABEL_STOP},
     }
@@ -743,7 +743,7 @@ void menuPrinting(void)
         if (lastPrinting == false)
           printInfoPopup();
       #endif
-      
+
       return;  // It will restart this interface if directly return this function without modify the value of infoMenu
     }
 

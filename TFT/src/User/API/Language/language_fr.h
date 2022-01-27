@@ -165,6 +165,7 @@
     #define STRING_READ_TFTSD_ERROR       "Erreur de lecture de la carte SD TFT!"
     #define STRING_TFTSD_INSERTED         "µSD insérée sur TFT!"
     #define STRING_TFTSD_REMOVED          "µSD retirée sur TFT!"
+    #define STRING_TFTSD_NOT_DETECTED     "Pas de µSD détectée."
     #define STRING_U_DISK                 "Clé USB"
     #define STRING_READ_U_DISK_ERROR      "Erreur de lecture de la clé USB!"
     #define STRING_U_DISK_INSERTED        "Clé USB insérée sur TFT!"
