@@ -547,7 +547,7 @@
  *   Value range: [min: 10, max: 12000]
  */
 #define NOZZLE_PAUSE_RETRACT_LENGTH                5.0f  // (mm) (Default: 15.0f)
-#define NOZZLE_RESUME_PURGE_LENGTH                 3.0f  // (mm) (Default: 16.0f)
+#define NOZZLE_RESUME_PURGE_LENGTH                10.0f  // (mm) (Default: 16.0f)
 #define NOZZLE_PAUSE_X_POSITION                    0.0f  // (mm) (Default: 10.0f)
 #define NOZZLE_PAUSE_Y_POSITION                  110.0f  // (mm) (Default: 10.0f)
 #define NOZZLE_PAUSE_Z_RAISE                      50.0f  // (mm) (Default: 10.0f)
@@ -1228,7 +1228,7 @@
  * Enable alternative Move Menu Buttons Layout matching the direction
  * of actual printer axis Update the icons from alternate icon folder.
  */
-//#define ALTERNATIVE_MOVE_MENU  // Default: uncommented (enabled)
+#define ALTERNATIVE_MOVE_MENU  // Default: uncommented (enabled)
 
 /**
  * Friendly Z Offset Language
@@ -1267,7 +1267,7 @@
  * Terminal Keyboard / Numpad Theme
  * Uncomment to enable Material theme for keyboard and Numpad.
  */
-#define KEYBOARD_MATERIAL_THEME  // Default: uncommented (enabled)
+////#define KEYBOARD_MATERIAL_THEME  // Default: uncommented (enabled)
 
 /**
  * Terminal Keyboard / Numpad Color Layout
