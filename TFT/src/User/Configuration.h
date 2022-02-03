@@ -6,7 +6,7 @@
 //====================================================================================================
 //=============================== Settings Configurable On config.ini ================================
 //====================================================================================================
-
+//#define QQSP
 //================================================================================
 //=============================== General Settings ===============================
 //================================================================================
@@ -172,7 +172,7 @@
  *     POPUP: Display a popup window for user confirmation.
  *     TOAST: A non-blocking Toast notification is displayed for few seconds. No user interaction is needed.
  */
-#define ACK_NOTIFICATION 1  // Default: 1
+#define ACK_NOTIFICATION 2  // Default: 1
 
 /**
  * Files Sorting
@@ -189,7 +189,7 @@
  * Display files in list mode instead of icon mode.
  *   Options: [disable: 0, enable: 1]
  */
-#define FILES_LIST_MODE 0  // Default: 1
+#define FILES_LIST_MODE 1  // Default: 1
 
 /**
  * Filename Extension
@@ -429,12 +429,21 @@
  *   Unit: [distance in mm]
  *   Value range: [min: -2000, max: 2000]
  */
-#define X_MIN_POS -132  // Default: 0
-#define Y_MIN_POS -132  // Default: 0
-#define Z_MIN_POS    0  // Default: 0
-#define X_MAX_POS  132  // Default: 235
-#define Y_MAX_POS  132  // Default: 235
-#define Z_MAX_POS  320  // Default: 250
+#ifdef QQSP
+  #define X_MIN_POS -130  // Default: 0
+  #define Y_MIN_POS -130  // Default: 0
+  #define Z_MIN_POS    0  // Default: 0
+  #define X_MAX_POS  130  // Default: 235
+  #define Y_MAX_POS  130  // Default: 235
+  #define Z_MAX_POS  370  // Default: 250
+#else
+  #define X_MIN_POS -132  // Default: 0
+  #define Y_MIN_POS -132  // Default: 0
+  #define Z_MIN_POS    0  // Default: 0
+  #define X_MAX_POS  132  // Default: 235
+  #define Y_MAX_POS  132  // Default: 235
+  #define Z_MAX_POS  320  // Default: 250
+#endif
 
 /**
  * X & Y Move Speeds/Feedrates
@@ -818,7 +827,7 @@
 #define TOUCH_SOUND  1  // Default: 1
 #define TOAST_SOUND  0  // Default: 1
 #define ALERT_SOUND  1  // Default: 1
-#define HEATER_SOUND 1  // Default: 1
+#define HEATER_SOUND 0  // Default: 1
 
 /**
  * LCD Brightness Levels (only for TFT28/TFT35/TFT43/TFT50/TFT70 V3.0)
@@ -900,25 +909,25 @@
 #define CUSTOM_LABEL_0 "Init.EEPROM"
 #define CUSTOM_GCODE_0 "M502\nM500\nM997\n"
 #define CUSTOM_LABEL_1 "Fast Calib.Delta"
-#define CUSTOM_GCODE_1 "G33 P3 V3\nM500\nM140 S0\n"
+#define CUSTOM_GCODE_1 "G33P3V3\nM500\nM140 S0\n"
 #define CUSTOM_LABEL_2 "Fine Calib.Delta"
-#define CUSTOM_GCODE_2 "G33 P5 V3\nM500\nM140 S0\n"
+#define CUSTOM_GCODE_2 "G33P5V3\nM500\nM140 S0\n"
 #define CUSTOM_LABEL_3 "0.BedLevel.UBL(PLA)"
-#define CUSTOM_GCODE_3 "M1004 H0 B60 S0\n"
+#define CUSTOM_GCODE_3 "M1004B60S0\n"
 #define CUSTOM_LABEL_4 "0.Run_PIDNozzlefor PLA"
-#define CUSTOM_GCODE_4 "M106 P0 S180\nM303 E0 C8 S210 U\nM500\nG28\nM107\n"
+#define CUSTOM_GCODE_4 "M106P0S180\nM303E0C8S210U\nM500\nG28\nM107\n"
 #define CUSTOM_LABEL_5 "0.PrintTestPattern in PLA"
-#define CUSTOM_GCODE_5 "G28W\nG29 L0\nG26 I0 P4\nM500\nG28W"
+#define CUSTOM_GCODE_5 "G28W\nG29L0\nG26I0P4\nM500\nG28W"
 #define CUSTOM_LABEL_6 "1.BedLevel.UBL for PETG"
-#define CUSTOM_GCODE_6 "M1004 H0 B80 S0\n"
+#define CUSTOM_GCODE_6 "M1004B80S0\n"
 #define CUSTOM_LABEL_7 "2.BedLevel.UBL for ABS"
-#define CUSTOM_GCODE_7 "M1004 H0 B90 S0\n"
+#define CUSTOM_GCODE_7 "M1004B90S0\n"
 #define CUSTOM_LABEL_8 "Reboot Printer"
 #define CUSTOM_GCODE_8 "M997\n"
 #define CUSTOM_LABEL_9 "UnLoad Filament (220C°)"
-#define CUSTOM_GCODE_9 "G28W\nG1 X0 Y-125 Z50\nM109 S220\nM702 L800\nM109 S0\nG28W\nM104 S0\n"
+#define CUSTOM_GCODE_9 "G28W\nG1 X0 Y-125 Z50\nM109S220\nM702L800\nM109S0\nG28W\nM104S0\n"
 #define CUSTOM_LABEL_11 "Load Filament (220C°)"
-#define CUSTOM_GCODE_11 "G28W\nG1 X0 Y-125 Z50\nM109 S220\nM701 L550\nM109 S0\nG28W\nM104 S0\n"
+#define CUSTOM_GCODE_11 "G28W\nG1 X0 Y-125 Z50\nM109S220\nM701L550\nM109S0\nG28W\nM104S0\n"
 //#define CUSTOM_LABEL_12 "Change Filament"
 //#define CUSTOM_GCODE_12 "G28W\nG1 X0 Y-125 Z50\nM109 S220\nM600 X0 Y-125 Z50\nM109 S0\nG28W\nM104 S0\n"
 
