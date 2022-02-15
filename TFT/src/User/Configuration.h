@@ -274,7 +274,7 @@
  *
  *   Options: [Layer height: 0, Layer number: 1, Both - height & number: 2]
  */
-#define LAYER_DISP_TYPE 0  // Default: 0
+#define LAYER_DISP_TYPE 1  // Default: 0
 
 //================================================================================
 //============================= Marlin Mode Settings =============================
@@ -558,11 +558,11 @@
 #define NOZZLE_PAUSE_RETRACT_LENGTH                5.0f  // (mm) (Default: 15.0f)
 #define NOZZLE_RESUME_PURGE_LENGTH                10.0f  // (mm) (Default: 16.0f)
 #define NOZZLE_PAUSE_X_POSITION                    0.0f  // (mm) (Default: 10.0f)
-#define NOZZLE_PAUSE_Y_POSITION                  110.0f  // (mm) (Default: 10.0f)
-#define NOZZLE_PAUSE_Z_RAISE                      50.0f  // (mm) (Default: 10.0f)
+#define NOZZLE_PAUSE_Y_POSITION                   10.0f  // (mm) (Default: 10.0f)
+#define NOZZLE_PAUSE_Z_RAISE                      10.0f  // (mm) (Default: 10.0f)
 #define NOZZLE_PAUSE_XY_FEEDRATE                   6000  // (mm/min) X and Y axes feedrate (Default: 6000)
 #define NOZZLE_PAUSE_Z_FEEDRATE                    1600  // (mm/min) Z axis feedrate (Default: 6000)
-#define NOZZLE_PAUSE_E_FEEDRATE                     600  // (mm/min) retract & purge feedrate (Default: 600)
+#define NOZZLE_PAUSE_E_FEEDRATE                    1000  // (mm/min) retract & purge feedrate (Default: 600)
 
 /**
  * Leveling Settings
@@ -827,7 +827,7 @@
 #define TOUCH_SOUND  1  // Default: 1
 #define TOAST_SOUND  0  // Default: 1
 #define ALERT_SOUND  1  // Default: 1
-#define HEATER_SOUND 0  // Default: 1
+#define HEATER_SOUND 1  // Default: 1
 
 /**
  * LCD Brightness Levels (only for TFT28/TFT35/TFT43/TFT50/TFT70 V3.0)
@@ -912,22 +912,22 @@
 #define CUSTOM_GCODE_1 "G33P3V3\nM500\nM140 S0\n"
 #define CUSTOM_LABEL_2 "Fine Calib.Delta"
 #define CUSTOM_GCODE_2 "G33P5V3\nM500\nM140 S0\n"
-#define CUSTOM_LABEL_3 "0.BedLevel.UBL(PLA)"
-#define CUSTOM_GCODE_3 "M1004B60S0\n"
-#define CUSTOM_LABEL_4 "0.Run_PIDNozzlefor PLA"
+#define CUSTOM_LABEL_3 "1.BedLevel.UBL(PLA)"
+#define CUSTOM_GCODE_3 "M1004B70S1\n"
+#define CUSTOM_LABEL_4 "1.Run_PIDNozzlefor PLA"
 #define CUSTOM_GCODE_4 "M106P0S180\nM303E0C8S210U\nM500\nG28\nM107\n"
-#define CUSTOM_LABEL_5 "0.PrintTestPattern in PLA"
-#define CUSTOM_GCODE_5 "G28W\nG29L0\nG26I0P4\nM500\nG28W"
-#define CUSTOM_LABEL_6 "1.BedLevel.UBL for PETG"
-#define CUSTOM_GCODE_6 "M1004B80S0\n"
-#define CUSTOM_LABEL_7 "2.BedLevel.UBL for ABS"
-#define CUSTOM_GCODE_7 "M1004B90S0\n"
+#define CUSTOM_LABEL_5 "1.PrintTestPattern in PLA"
+#define CUSTOM_GCODE_5 "G28W\nG29L1\nG26I0P4\nM500\nG28W"
+#define CUSTOM_LABEL_6 "2.BedLevel.UBL for PETG"
+#define CUSTOM_GCODE_6 "M1004B80S2\n"
+#define CUSTOM_LABEL_7 "3.BedLevel.UBL for ABS"
+#define CUSTOM_GCODE_7 "M1004B90S3\n"
 #define CUSTOM_LABEL_8 "Reboot Printer"
 #define CUSTOM_GCODE_8 "M997\n"
 #define CUSTOM_LABEL_9 "UnLoad Filament (220C°)"
-#define CUSTOM_GCODE_9 "G28W\nG1 X0 Y-125 Z50\nM109S220\nM702L800\nM109S0\nG28W\nM104S0\n"
+#define CUSTOM_GCODE_9 "G28W\nG0X0Y-125Z20F3000\nM109S220\nM702L800Z1\nM109S0\nG28\nM104S0\n"
 #define CUSTOM_LABEL_11 "Load Filament (220C°)"
-#define CUSTOM_GCODE_11 "G28W\nG1 X0 Y-125 Z50\nM109S220\nM701L550\nM109S0\nG28W\nM104S0\n"
+#define CUSTOM_GCODE_11 "G28W\nG0X0Y-125Z20F3000\nM109S220\nM701T0L550Z1\nG28W\nM109S0\nM104S0\n"
 //#define CUSTOM_LABEL_12 "Change Filament"
 //#define CUSTOM_GCODE_12 "G28W\nG1 X0 Y-125 Z50\nM109 S220\nM600 X0 Y-125 Z50\nM109 S0\nG28W\nM104 S0\n"
 
@@ -1238,7 +1238,7 @@
  * of actual printer axis Update the icons from alternate icon folder.
  * Not for Delta
  */
-//#define ALTERNATIVE_MOVE_MENU  // Default: uncommented (enabled)
+#define ALTERNATIVE_MOVE_MENU  // Default: uncommented (enabled)
 
 /**
  * Friendly Z Offset Language
