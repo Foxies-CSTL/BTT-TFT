@@ -132,8 +132,7 @@ void coordinateQuery(uint8_t seconds)
     }
     else  // if auto report is disabled
     {
-      // turn off auto report if it was turned on
-      coordinateQueryWait = storeCmdScript("%sM114\n", (infoMachineSettings.autoReportPos == 1 && curQuerySeconds != 0) ? "M154 S0\n" : "");
+      coordinateQueryWait = storeCmd("M114\n");    
     }
   }
 }
