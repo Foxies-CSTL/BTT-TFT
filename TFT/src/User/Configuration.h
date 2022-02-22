@@ -274,7 +274,7 @@
  *
  *   Options: [Layer height: 0, Layer number: 1, Both - height & number: 2]
  */
-#define LAYER_DISP_TYPE 1  // Default: 0
+#define LAYER_DISP_TYPE 2  // Default: 0
 
 //================================================================================
 //============================= Marlin Mode Settings =============================
@@ -558,8 +558,8 @@
 #define NOZZLE_PAUSE_RETRACT_LENGTH                5.0f  // (mm) (Default: 15.0f)
 #define NOZZLE_RESUME_PURGE_LENGTH                10.0f  // (mm) (Default: 16.0f)
 #define NOZZLE_PAUSE_X_POSITION                    0.0f  // (mm) (Default: 10.0f)
-#define NOZZLE_PAUSE_Y_POSITION                   10.0f  // (mm) (Default: 10.0f)
-#define NOZZLE_PAUSE_Z_RAISE                      10.0f  // (mm) (Default: 10.0f)
+#define NOZZLE_PAUSE_Y_POSITION                 -110.0f  // (mm) (Default: 10.0f)
+#define NOZZLE_PAUSE_Z_RAISE                      20.0f  // (mm) (Default: 10.0f)
 #define NOZZLE_PAUSE_XY_FEEDRATE                   6000  // (mm/min) X and Y axes feedrate (Default: 6000)
 #define NOZZLE_PAUSE_Z_FEEDRATE                    1600  // (mm/min) Z axis feedrate (Default: 6000)
 #define NOZZLE_PAUSE_E_FEEDRATE                    1000  // (mm/min) retract & purge feedrate (Default: 600)
@@ -593,7 +593,7 @@
  *   Value range: [min: 10, max: 12000]
  */
 #define LEVELING_EDGE_DISTANCE    10  // (mm) Inset distance from bed's edge for calculating leveling point location (Default: 20)
-#define LEVELING_Z_POS         0.2f  // (mm) Z-axis position when nozzle stays for leveling (Default: 0.2f)
+#define LEVELING_Z_POS          0.2f  // (mm) Z-axis position when nozzle stays for leveling (Default: 0.2f)
 #define LEVELING_Z_RAISE       10.0f  // (mm) Z-axis position when nozzle move to next point (Default: 10.0f)
 #define LEVELING_XY_FEEDRATE    3960  // (mm/min) X and Y axes move feedrate (Default: 6000)
 #define LEVELING_Z_FEEDRATE     1200  // (mm/min) Z axis move feedrate (Default: 6000)
@@ -845,7 +845,7 @@
  * period of the LCD idle time.
  *   Options: [OFF: 0, 5sec: 1, 10sec: 2, 30sec: 3, 1min: 4, 2min: 5, 5min: 6, 10min: 7]
  */
-#define LCD_IDLE_TIME 7  // Default: 0
+#define LCD_IDLE_TIME 6  // Default: 0
 
 // Custom value in seconds. This will be used if LCD_IDLE_TIME is set to 7 (CUSTOM Seconds)
 #define IDLE_TIME_CUSTOM (10 * 60)  // Default: 10 * 60
@@ -875,12 +875,12 @@
  *                     I: Index;     NEOPIXEL
  *   Value range: [min: 0, max: 255]
  */
-#define LED_R 255  // R: Red (Default: 0)
-#define LED_G 255  // G: Green (Default: 0)
-#define LED_B 255  // B: Blue (Default: 0)
-#define LED_W 255  // W: White;     NEOPIXEL or RGB(W) (Default: 0)
-#define LED_P 255  // P: Intensity; NEOPIXEL (Default: 0)
-#define LED_I 255  // I: Index;     NEOPIXEL (Default: 0)
+#define LED_R 0  // R: Red (Default: 0)
+#define LED_G 0  // G: Green (Default: 0)
+#define LED_B 0  // B: Blue (Default: 0)
+#define LED_W 0  // W: White;     NEOPIXEL or RGB(W) (Default: 0)
+#define LED_P 0  // P: Intensity; NEOPIXEL (Default: 0)
+#define LED_I 0  // I: Index;     NEOPIXEL (Default: 0)
 
 /**
  * LED Always ON
@@ -956,7 +956,7 @@
 #define CUSTOM_LABEL_9 "UnLoad Filament (220C°)"
 #define CUSTOM_GCODE_9 "G28W\nG0X0Y-125Z20F3000\nM109S220\nM702L800Z1\nM109S0\nG28\nM104S0\n"
 #define CUSTOM_LABEL_11 "Load Filament (220C°)"
-#define CUSTOM_GCODE_11 "G28W\nG0X0Y-125Z20F3000\nM109S220\nM701T0L550Z1\nG28W\nM109S0\nM104S0\n"
+#define CUSTOM_GCODE_11 "G28W\nG0X0Y-125Z20F3000\nM109S220\nM701T0L550Z1\nM109S0\nG28W\nM104S0\n"
 //#define CUSTOM_LABEL_12 "Change Filament"
 //#define CUSTOM_GCODE_12 "G28W\nG1 X0 Y-125 Z50\nM109 S220\nM600 X0 Y-125 Z50\nM109 S0\nG28W\nM104 S0\n"
 
