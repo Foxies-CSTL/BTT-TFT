@@ -7,6 +7,7 @@
 //=============================== Settings Configurable On config.ini ================================
 //====================================================================================================
 //#define QQSP
+//#define QSR_DD
 //================================================================================
 //=============================== General Settings ===============================
 //================================================================================
@@ -555,7 +556,11 @@
  *   Unit: [feedrate in mm/min]
  *   Value range: [min: 10, max: 12000]
  */
-#define NOZZLE_PAUSE_RETRACT_LENGTH                5.0f  // (mm) (Default: 15.0f)
+#ifdef QSR_DD
+  #define NOZZLE_PAUSE_RETRACT_LENGTH                5.0f  // (mm) (Default: 15.0f)
+#else
+  #define NOZZLE_PAUSE_RETRACT_LENGTH                1.0f  // (mm) (Default: 15.0f)
+#endif
 #define NOZZLE_RESUME_PURGE_LENGTH                10.0f  // (mm) (Default: 16.0f)
 #define NOZZLE_PAUSE_X_POSITION                    0.0f  // (mm) (Default: 10.0f)
 #define NOZZLE_PAUSE_Y_POSITION                 -110.0f  // (mm) (Default: 10.0f)
