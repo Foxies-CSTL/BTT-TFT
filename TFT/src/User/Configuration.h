@@ -7,7 +7,7 @@
 //=============================== Settings Configurable On config.ini ================================
 //====================================================================================================
 //#define QQSP
-//#define QSR_DD
+#define QSR_DD
 //================================================================================
 //=============================== General Settings ===============================
 //================================================================================
@@ -212,7 +212,7 @@
  * Show persistent temperature info in all menus.
  *   Options: [disable: 0, enable: 1]
  */
-#define PERSISTENT_INFO 0  // Default: 0
+#define PERSISTENT_INFO 1  // Default: 0
 
 /**
  * Temperature ACK In Terminal
@@ -556,7 +556,7 @@
  *   Unit: [feedrate in mm/min]
  *   Value range: [min: 10, max: 12000]
  */
-#ifdef QSR_DD
+#ifndef QSR_DD
   #define NOZZLE_PAUSE_RETRACT_LENGTH                5.0f  // (mm) (Default: 15.0f)
 #else
   #define NOZZLE_PAUSE_RETRACT_LENGTH                1.0f  // (mm) (Default: 15.0f)
@@ -684,8 +684,8 @@
  *                bed temp:    [min: 20, max: 400]
  */
 #define PREHEAT_LABELS {"PLA", "PETG", "ABS", "WOOD", "TPU", "NYLON"}  // Default: {"PLA", "PETG", "ABS", "WOOD", "TPU", "NYLON"}
-#define PREHEAT_HOTEND {200,   230,    240,   200,    230,   250}      // Default: {200,   240,    230,   170,    220,   250}
-#define PREHEAT_BED    { 60,    80,     90,    60,     50,    90}      // Default: { 60,    70,     90,    50,     50,    90}
+#define PREHEAT_HOTEND {220,   240,    250,   210,    230,   250}      // Default: {200,   240,    230,   170,    220,   250}
+#define PREHEAT_BED    { 70,    80,     90,    60,     50,    90}      // Default: { 60,    70,     90,    50,     50,    90}
 
 //================================================================================
 //============================ Power Supply Settings =============================
@@ -949,7 +949,7 @@
 #define CUSTOM_LABEL_3 "1.BedLevel.UBL(PLA)"
 #define CUSTOM_GCODE_3 "M1004B70S1\n"
 #define CUSTOM_LABEL_4 "1.Run_PIDNozzlefor PLA"
-#define CUSTOM_GCODE_4 "M106P0S180\nM303E0C8S210U\nM500\nG28\nM107\n"
+#define CUSTOM_GCODE_4 "M106P0S180\nM303E0C8S220U\nM500\nG28\nM107\n"
 #define CUSTOM_LABEL_5 "1.PrintTestPattern in PLA"
 #define CUSTOM_GCODE_5 "G28W\nG29L1\nG26I0P4\nM500\nG28W"
 #define CUSTOM_LABEL_6 "2.BedLevel.UBL for PETG"
