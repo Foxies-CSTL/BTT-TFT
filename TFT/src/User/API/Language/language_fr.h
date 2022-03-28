@@ -164,7 +164,7 @@
 
     // TFT Media, Onboard Media, Filament Runout Process Commands / Status / Info
     #define STRING_TFT_SD                 "µSD TFT"
-    #define STRING_TFT_SD_READ_ERROR      "Erreur de lecture de la carte SD TFT!"
+    #define STRING_TFT_SD_READ_ERROR      "Erreur de lecture de la µSD TFT!"
     #define STRING_TFT_SD_INSERTED        "µSD insérée!"
     #define STRING_TFT_SD_REMOVED         "µSD retirée!"
     #define STRING_TFT_SD_NOT_DETECTED    "Aucune µSD détectée."
@@ -175,7 +175,7 @@
     #define STRING_TFT_USB_NOT_DETECTED   "Aucune clé USB détectée."
     #define STRING_ONBOARD_SD             "µSD interne"
     #define STRING_ONBOARD_USB            "Clef USB interne"
-    #define STRING_ONBOARD_SD_READ_ERROR  "Erreur de lecture du média interne!"
+    #define STRING_ONBOARD_SD_READ_ERROR  "Erreur de lecture de la µSD interne!"
     #define STRING_FILAMENT_RUNOUT        "Fin de Filament!"
 
     // Steppers, Print, Probe Process Commands / Status / Info
