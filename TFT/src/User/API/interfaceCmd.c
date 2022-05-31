@@ -803,7 +803,9 @@ void sendQueueCmd(void)
           if (cmd_seen('R'))
           {
             setPrintRemainingTime((cmd_value() * 60));
-            setM73R_presence(true);  // disable parsing remaning time from gcode comments
+            setTimeFromSlicer(true);  // disable parsing remaning time from gcode comments
+            if (getPrintProgSource() == PROG_FILE && infoSettings.prog_source == 1)
+              setPrintProgSource(PROG_TIME);
           }
 
           if (!infoMachineSettings.buildPercent)  // if M73 is not supported by Marlin, skip it
@@ -917,6 +919,7 @@ void sendQueueCmd(void)
           {
             // format: Time Left <XX>h<YY>m<ZZ>s (e.g. Time Left 02h04m06s)
             parsePrintRemainingTime(&cmd_ptr[cmd_index]);  // cmd_index was set by cmd_seen_from function
+            setTimeFromSlicer(true);
           }
           else if (cmd_seen_from(cmd_base_index, "Layer Left"))  // parsing printing layer left
           {
@@ -1204,6 +1207,9 @@ void sendQueueCmd(void)
           if (cmd_value() == 914) param = P_BUMPSENSITIVITY;   // P_BUMPSENSITIVITY
 
           uint8_t i = (cmd_seen('I')) ? cmd_value() : 0;
+
+          if (i > 0)  // "X1"->0, "X2"->1, "Y1"->0, "Y2"->1, "Z1"->0, "Z2"->1, "Z3"->2, "Z4"->3
+            i--;
 
           if (cmd_seen('X')) setParameter(param, STEPPER_INDEX_X + i, cmd_value());
           if (cmd_seen('Y')) setParameter(param, STEPPER_INDEX_Y + i, cmd_value());
