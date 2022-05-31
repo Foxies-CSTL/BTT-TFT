@@ -297,6 +297,7 @@
     #define STRING_ABL_SLOT_EEPROM        "Uložit síť do EEPROM a načíst po restartu?"
     #define STRING_ABL_Z                  "Z-Slábnutí"
     #define STRING_LEVEL_CORNER           "L Rohu"
+    #define STRING_LEVEL_CORNER_INFO      "Vzdálenost od okraje je menší než offset sondy X/Y a některé body nemusí být dosažitelné.\nPoužít bezpečnou vzdálenost od okraje?"
     #define STRING_P_OFFSET               "P Offset"
     #define STRING_H_OFFSET               "H Offset"
     #define STRING_DISTANCE               "Od okraje"

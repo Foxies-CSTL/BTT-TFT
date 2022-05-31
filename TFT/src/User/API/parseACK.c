@@ -867,6 +867,22 @@ void parseACK(void)
         if (ack_seen("Y: ")) y = ack_value();
         if (ack_seen("Z: ")) levelingSetProbedPoint(x, y, ack_value());  // save probed Z value
       }
+      // parse and store Delta Calibration settings
+      #if DELTA_PROBE_TYPE != 0
+      else if (ack_seen("Calibration OK"))
+      {
+        BUZZER_PLAY(SOUND_SUCCESS);
+        if (infoMachineSettings.EEPROM == 1)
+          {
+            setDialogText(LABEL_DELTA_CONFIGURATION, LABEL_EEPROM_SAVE_INFO, LABEL_CONFIRM, LABEL_CANCEL);
+            showDialog(DIALOG_TYPE_SUCCESS, saveEepromSettings, NULL, NULL);
+          }
+        else
+          {
+            popupReminder(DIALOG_TYPE_SUCCESS, LABEL_DELTA_CONFIGURATION, LABEL_PROCESS_COMPLETED);
+          } 
+      } 
+      #endif
 
       //----------------------------------------
       // Parameter / M503 / M115 parsed responses
@@ -1030,6 +1046,9 @@ void parseACK(void)
         if (ack_seen("M914")) param = P_BUMPSENSITIVITY;   // P_BUMPSENSITIVITY
 
         uint8_t i = (ack_seen("I")) ? ack_value() : 0;
+
+        if (i > 0)  // "X1"->0, "X2"->1, "Y1"->0, "Y2"->1, "Z1"->0, "Z2"->1, "Z3"->2, "Z4"->3
+          i--;
 
         if (ack_seen("X")) setParameter(param, STEPPER_INDEX_X + i, ack_value());
         if (ack_seen("Y")) setParameter(param, STEPPER_INDEX_Y + i, ack_value());
@@ -1208,7 +1227,7 @@ void parseACK(void)
     }
 
   parse_end:
-    if (avoid_terminal != true && MENU_IS(menuTerminal))
+    if (!avoid_terminal && MENU_IS(menuTerminal))
     {
       terminalCache(dmaL2Cache, dmaL2Cache_len, ack_port_index, SRC_TERMINAL_ACK);
     }
