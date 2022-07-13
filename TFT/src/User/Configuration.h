@@ -7,7 +7,7 @@
 //=============================== Settings Configurable On config.ini ================================
 //====================================================================================================
 //#define QQSP
-//#define QSR_DD
+#define QSR_DD
 //#define MPCTEMP
 //================================================================================
 //=============================== General Settings ===============================
@@ -942,7 +942,7 @@
  * Greater than 0 means the number of LEDs in the strip.
  *   Value range: [min: 0, max: 200]
  */
-//#define NEOPIXEL_PIXELS 0  // Default: commented (use default value for TFT variant).
+#define NEOPIXEL_PIXELS 0  // Default: commented (use default value for TFT variant).
                              // Uncomment it to override default value for TFT variant
 
 //================================================================================
@@ -981,10 +981,10 @@
 #define CUSTOM_GCODE_7 "G29L3\nM1004B90S3\n"
 #define CUSTOM_LABEL_8 "Reboot Printer"
 #define CUSTOM_GCODE_8 "M997\n"
-#define CUSTOM_LABEL_9 "UnLoad Filament (220C°)"
-#define CUSTOM_GCODE_9 "G28W\nG0X0Y-125Z20F3000\nM109S220\nM702L800Z1\nM109S0\nG28\nM104S0\n"
-#define CUSTOM_LABEL_11 "Load Filament (220C°)"
-#define CUSTOM_GCODE_11 "G28W\nG0X0Y-125Z20F3000\nM109S220\nM701T0L550Z1\nM109S0\nG28W\nM104S0\n"
+//#define CUSTOM_LABEL_9 "UnLoad Filament (220C°)"
+//#define CUSTOM_GCODE_9 "G28W\nG0X0Y-125Z20F3000\nM109S220\nM702L800Z1\nM109S0\nG28\nM104S0\n"
+//#define CUSTOM_LABEL_10 "Load Filament (220C°)"
+//#define CUSTOM_GCODE_10 "G28W\nG0X0Y-125Z20F3000\nM109S220\nM701T0L550Z1\nM109S0\nG28W\nM104S0\n"
 //#define CUSTOM_LABEL_12 "Change Filament"
 //#define CUSTOM_GCODE_12 "G28W\nG1 X0 Y-125 Z50\nM109 S220\nM600 X0 Y-125 Z50\nM109 S0\nG28W\nM104 S0\n"
 
