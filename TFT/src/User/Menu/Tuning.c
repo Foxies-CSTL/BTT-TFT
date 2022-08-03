@@ -66,6 +66,10 @@ void menuTuning(void)
       case KEY_ICON_2:
         if (hasMPC() && infoSettings.bed_en)
           OPEN_MENU(menuTuneExtruder);
+
+        break;
+
+      case KEY_ICON_3:
         #if DELTA_PROBE_TYPE == 0  // if not Delta printer
           { 
             storeCmd("M206\n");
@@ -76,18 +80,6 @@ void menuTuning(void)
             showDialog(DIALOG_TYPE_ALERT, NULL, NULL, NULL);
             storeCmd("M851\n");
             zOffsetSetMenu(true);  // use Probe Offset menu
-            OPEN_MENU(menuZOffset);
-          }        
-        #endif
-
-        break;
-
-      case KEY_ICON_3:
-        #if DELTA_PROBE_TYPE == 0  // if not Delta printer
-          if (hasMPC() && infoSettings.bed_en)
-          {
-            storeCmd("M206\n");
-            zOffsetSetMenu(false);  // use Home Offset menu
             OPEN_MENU(menuZOffset);
           }
         #endif

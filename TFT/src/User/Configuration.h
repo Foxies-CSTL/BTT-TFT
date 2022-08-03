@@ -6,9 +6,9 @@
 //====================================================================================================
 //=============================== Settings Configurable On config.ini ================================
 //====================================================================================================
-//#define QQSP
-#define QSR_DD
-//#define MPCTEMP
+#define QQSP       // Default QSR
+#define FLSUNQ_DD  // Default FLSUN_BD
+#define MPCTEMP    // Default PID
 //================================================================================
 //=============================== General Settings ===============================
 //================================================================================
@@ -191,7 +191,7 @@
  * Display files in list mode instead of icon mode.
  *   Options: [disable: 0, enable: 1]
  */
-#define FILES_LIST_MODE 1  // Default: 1
+#define FILES_LIST_MODE 0  // Default: 1
 
 /**
  * Filename Extension
@@ -464,7 +464,7 @@
   #define Z_MIN_POS    0  // Default: 0
   #define X_MAX_POS  132  // Default: 235
   #define Y_MAX_POS  132  // Default: 235
-  #define Z_MAX_POS  320  // Default: 250
+  #define Z_MAX_POS  330  // Default: 250
 #endif
 
 /**
@@ -577,15 +577,15 @@
  *   Unit: [feedrate in mm/min]
  *   Value range: [min: 10, max: 12000]
  */
-#ifndef QSR_DD
-  #define NOZZLE_PAUSE_RETRACT_LENGTH                5.0f  // (mm) (Default: 15.0f)
+#ifdef FLSUNQ_DD
+  #define NOZZLE_PAUSE_RETRACT_LENGTH              1.0f  // (mm) (Default: 15.0f)
 #else
-  #define NOZZLE_PAUSE_RETRACT_LENGTH                1.0f  // (mm) (Default: 15.0f)
+  #define NOZZLE_PAUSE_RETRACT_LENGTH              5.0f  // (mm) (Default: 15.0f)
 #endif
 #define NOZZLE_RESUME_PURGE_LENGTH                10.0f  // (mm) (Default: 16.0f)
 #define NOZZLE_PAUSE_X_POSITION                    0.0f  // (mm) (Default: 10.0f)
-#define NOZZLE_PAUSE_Y_POSITION                 -110.0f  // (mm) (Default: 10.0f)
-#define NOZZLE_PAUSE_Z_RAISE                      20.0f  // (mm) (Default: 10.0f)
+#define NOZZLE_PAUSE_Y_POSITION     (Y_MIN_POS + 10.0f)  // (mm) (Default: 10.0f)
+#define NOZZLE_PAUSE_Z_RAISE                      50.0f  // (mm) (Default: 10.0f)
 #define NOZZLE_PAUSE_XY_FEEDRATE                   6000  // (mm/min) X and Y axes feedrate (Default: 6000)
 #define NOZZLE_PAUSE_Z_FEEDRATE                    1600  // (mm/min) Z axis feedrate (Default: 6000)
 #define NOZZLE_PAUSE_E_FEEDRATE                    1000  // (mm/min) retract & purge feedrate (Default: 600)
@@ -707,7 +707,7 @@
  *                bed temp:    [min: 20, max: 400]
  */
 #define PREHEAT_LABELS {"PLA", "PETG", "ABS", "WOOD", "TPU", "NYLON"}  // Default: {"PLA", "PETG", "ABS", "WOOD", "TPU", "NYLON"}
-#define PREHEAT_HOTEND {220,   240,    250,   210,    230,   250}      // Default: {200,   240,    230,   170,    220,   250}
+#define PREHEAT_HOTEND {200,   230,    240,   200,    230,   250}      // Default: {200,   240,    230,   170,    220,   250}
 #define PREHEAT_BED    { 70,    80,     90,    60,     50,    90}      // Default: { 60,    70,     90,    50,     50,    90}
 
 //================================================================================
@@ -903,12 +903,12 @@
  *                     I: Index;     NEOPIXEL
  *   Value range: [min: 0, max: 255]
  */
-#define LED_R 0  // R: Red (Default: 0)
-#define LED_G 0  // G: Green (Default: 0)
-#define LED_B 0  // B: Blue (Default: 0)
-#define LED_W 0  // W: White;     NEOPIXEL or RGB(W) (Default: 0)
-#define LED_P 0  // P: Intensity; NEOPIXEL (Default: 0)
-#define LED_I 0  // I: Index;     NEOPIXEL (Default: 0)
+#define LED_R 255  // R: Red (Default: 0)
+#define LED_G 255  // G: Green (Default: 0)
+#define LED_B 255  // B: Blue (Default: 0)
+#define LED_W 255  // W: White;     NEOPIXEL or RGB(W) (Default: 0)
+#define LED_P 255  // P: Intensity; NEOPIXEL (Default: 0)
+#define LED_I 255  // I: Index;     NEOPIXEL (Default: 0)
 
 /**
  * LED Always ON
@@ -971,10 +971,17 @@
 #define CUSTOM_GCODE_2 "G33P5V3\nM500\nM140 S0\n"
 #define CUSTOM_LABEL_3 "1.BedLevel.UBL(PLA)"
 #define CUSTOM_GCODE_3 "G29L1\nM1004B70S1\n"
-#define CUSTOM_LABEL_4 "1.Run_PIDNozzlefor PLA"
-#define CUSTOM_GCODE_4 "M106P0S180\nM303E0C8S220U\nM500\nG28\nM107\n"
+
+#ifdef MPCTEMP
+  #define CUSTOM_LABEL_4 "1.Run Autotune on Active extruder"
+  #define CUSTOM_GCODE_4 "M306T\nM500\nG28\nM107\n"
+#else
+  #define CUSTOM_LABEL_4 "1.Run_PIDNozzlefor PLA"
+  #define CUSTOM_GCODE_4 "M106P0S180\nM303E0C8S220U\nM500\nG28\nM107\n"
+#endif
+
 #define CUSTOM_LABEL_5 "1.PrintTestPattern in PLA"
-#define CUSTOM_GCODE_5 "G28W\nG29L1\nG26I0P4\nM500\nG28W"
+#define CUSTOM_GCODE_5 "G28\nG29L1\nG26I0P4\nM500\nG28"
 #define CUSTOM_LABEL_6 "2.BedLevel.UBL for PETG"
 #define CUSTOM_GCODE_6 "G29L2\nM1004B80S2\n"
 #define CUSTOM_LABEL_7 "3.BedLevel.UBL for ABS"
@@ -1301,7 +1308,7 @@
  * of actual printer axis Update the icons from alternate icon folder.
  * Not for Delta
  */
-#define ALTERNATIVE_MOVE_MENU  // Default: uncommented (enabled)
+//#define ALTERNATIVE_MOVE_MENU  // Default: uncommented (enabled)
 
 /**
  * Friendly Z Offset Language
@@ -1340,7 +1347,7 @@
  * Terminal Keyboard / Numpad Theme
  * Uncomment to enable Material theme for keyboard and Numpad.
  */
-////#define KEYBOARD_MATERIAL_THEME  // Default: uncommented (enabled)
+#define KEYBOARD_MATERIAL_THEME  // Default: uncommented (enabled)
 
 /**
  * Terminal Keyboard / Numpad Color Layout
@@ -1355,7 +1362,7 @@
 #define KEYBOARD_COLOR_LAYOUT 0  // Default: 0
 
 /**
- * QWERTY/QWERTZ Keyboard Layout
+ * QWERTY/QWERTZ Keyboard Layout (Terminal menu)
  * Keyboard layout for Terminal Keyboard (Only for TFT70 V3.0).
  *   Options: [qwerty: 0, qwertz: 1, azerty: 2]
  *     qwerty: The typically keyboard Layout for english.
