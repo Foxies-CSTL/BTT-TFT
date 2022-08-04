@@ -1,6 +1,15 @@
 #include "Tuning.h"
 #include "includes.h"
 
+#if DELTA_PROBE_TYPE != 0  // if Delta printer
+  void TuneZOffset(void)
+  {
+    storeCmd("M851\n");
+    zOffsetSetMenu(true);  // use Probe Offset menu
+    OPEN_MENU(menuZOffset);
+  }
+#endif
+
 void menuTuning(void)
 {
   MENUITEMS TuningItems = {
@@ -66,21 +75,33 @@ void menuTuning(void)
       case KEY_ICON_2:
         if (hasMPC() && infoSettings.bed_en)
           OPEN_MENU(menuTuneExtruder);
+        #if DELTA_PROBE_TYPE == 0  // if not Delta printer
+          else
+          {
+            storeCmd("M206\n");
+            zOffsetSetMenu(false);  // use Home Offset menu
+            OPEN_MENU(menuZOffset);
+          }
+        #endif
 
         break;
 
       case KEY_ICON_3:
         #if DELTA_PROBE_TYPE == 0  // if not Delta printer
+          if (hasMPC() && infoSettings.bed_en)
           { 
             storeCmd("M206\n");
             zOffsetSetMenu(false);  // use Home Offset menu
             OPEN_MENU(menuZOffset);
-          else
+          }
+        #else
+          {
+          #if DELTA_PROBE_TYPE != 2
+            TuneZOffset();
+          #else
             setDialogText(LABEL_WARNING, LABEL_DISCONNECT_PROBE, LABEL_CONTINUE, LABEL_CANCEL);
-            showDialog(DIALOG_TYPE_ALERT, NULL, NULL, NULL);
-            storeCmd("M851\n");
-            zOffsetSetMenu(true);  // use Probe Offset menu
-            OPEN_MENU(menuZOffset);
+            showDialog(DIALOG_TYPE_ALERT, TuneZOffset, NULL, NULL);
+          #endif
           }
         #endif
 

@@ -101,7 +101,7 @@
  * Rotate UI by 180 degrees.
  *   Options: [disable: 0, enable: 1]
  */
-#define ROTATED_UI 0  // Default: 0
+#define ROTATED_UI 1  // Default: 0
 
 /**
  * Touch Mode Language
@@ -707,7 +707,7 @@
  *                bed temp:    [min: 20, max: 400]
  */
 #define PREHEAT_LABELS {"PLA", "PETG", "ABS", "WOOD", "TPU", "NYLON"}  // Default: {"PLA", "PETG", "ABS", "WOOD", "TPU", "NYLON"}
-#define PREHEAT_HOTEND {200,   230,    240,   200,    230,   250}      // Default: {200,   240,    230,   170,    220,   250}
+#define PREHEAT_HOTEND {205,   230,    240,   200,    230,   250}      // Default: {200,   240,    230,   170,    220,   250}
 #define PREHEAT_BED    { 70,    80,     90,    60,     50,    90}      // Default: { 60,    70,     90,    50,     50,    90}
 
 //================================================================================

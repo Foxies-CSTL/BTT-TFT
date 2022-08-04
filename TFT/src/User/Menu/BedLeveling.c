@@ -27,6 +27,11 @@ void blUpdateState(MENUITEMS * menu)
     zOffsetSetMenu(true);  // use Probe Offset menu
     OPEN_MENU(menuZOffset);
   }
+
+  void deltaMeshValid(void)
+  {
+    OPEN_MENU(menuMeshValid);
+  }
 #endif
 
 void menuBedLeveling(void)
@@ -95,18 +100,7 @@ void menuBedLeveling(void)
     switch (key_num)
     {
       case KEY_ICON_0:
-        #if DELTA_PROBE_TYPE == 0
           OPEN_MENU(menuBedLevelingLayer2);
-        #else
-          {
-            #if DELTA_PROBE_TYPE != 2  // if not removable probe
-              ablStart();
-            #else  // if removable probe
-              setDialogText(LABEL_WARNING, LABEL_CONNECT_PROBE, LABEL_CONTINUE, LABEL_CANCEL);
-              showDialog(DIALOG_TYPE_ALERT, ablStart, NULL, NULL);
-            #endif
-          }
-        #endif
         break;
 
       case KEY_ICON_1:
@@ -119,7 +113,12 @@ void menuBedLeveling(void)
         break;
 
       case KEY_ICON_2:
-        OPEN_MENU(menuMeshValid);
+        #if DELTA_PROBE_TYPE != 2
+          OPEN_MENU(menuMeshValid);
+        #else        
+          setDialogText(LABEL_WARNING, LABEL_DISCONNECT_PROBE, LABEL_CONTINUE, LABEL_CANCEL);
+          showDialog(DIALOG_TYPE_ALERT, deltaMeshValid, NULL, NULL);
+        #endif
         break;
 
       case KEY_ICON_3:

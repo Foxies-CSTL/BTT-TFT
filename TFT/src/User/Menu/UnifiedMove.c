@@ -46,7 +46,11 @@ void menuUnifiedMove(void)
     switch (key_num)
     {
       case KEY_ICON_0:
-        OPEN_MENU(menuHome);
+        #if DELTA_PROBE_TYPE != 0  // if Delta printer
+          storeCmd("G28\n");
+        #else
+          OPEN_MENU(menuHome);
+        #endif
         break;
 
       case KEY_ICON_1:
