@@ -6,9 +6,9 @@
 //====================================================================================================
 //=============================== Settings Configurable On config.ini ================================
 //====================================================================================================
-#define QQSP       // Default QSR
-#define FLSUNQ_DD  // Default FLSUN_BD
-#define MPCTEMP    // Default PID
+//#define QQSP       // Default QSR
+//#define FLSUNQ_DD  // Default FLSUN_BD
+//#define MPCTEMP    // Default PID
 //================================================================================
 //=============================== General Settings ===============================
 //================================================================================
@@ -1151,8 +1151,8 @@
 #define Z_FADE_DEFAULT_VALUE 10.0f  // Default: 10.0f
 
 // Probe Offset limits
-#define PROBE_Z_OFFSET_MIN_VALUE     -20.0f  // Default: -20.0f
-#define PROBE_Z_OFFSET_MAX_VALUE      20.0f  // Default: 20.0f
+#define PROBE_Z_OFFSET_MIN_VALUE     -30.0f  // Default: -20.0f
+#define PROBE_Z_OFFSET_MAX_VALUE      25.0f  // Default: 20.0f
 #define PROBE_Z_OFFSET_DEFAULT_VALUE  16.2f  // Default: 0.0f
 
 // Home Offset limits
