@@ -100,6 +100,7 @@ void menuBedLeveling(void)
     switch (key_num)
     {
       case KEY_ICON_0:
+        #if DELTA_PROBE_TYPE == 0
           OPEN_MENU(menuBedLevelingLayer2);
         #else
           {
