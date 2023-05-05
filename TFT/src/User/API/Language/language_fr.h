@@ -278,7 +278,7 @@
     #define STRING_POINT_3                "Point 3"
     #define STRING_POINT_4                "Point 4"
     #define STRING_POINT_5                "Point 5"
-    #define STRING_BED_LEVELING           "Nivel.Δ"
+    #define STRING_BED_LEVELING           "Nivellement"
     #define STRING_BL_COMPLETE            "Nivellement terminé"
     #define STRING_BL_SMART_FILL          "Les points de sonde manquants ont été intelligemment remplis.\n\nNote : n'oubliez pas de sauvegarder !"
     #define STRING_BL_ENABLE              "BL On"

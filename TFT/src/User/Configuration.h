@@ -7,8 +7,8 @@
 //=============================== Settings Configurable On config.ini ================================
 //====================================================================================================
 //#define QQSP       // Default QSR
-//#define FLSUNQ_DD  // Default FLSUN_BD
-//#define MPCTEMP    // Default PID
+#define FLSUNQ_DD  // Default FLSUN_BD
+#define MPCTEMP    // Default PID
 //================================================================================
 //=============================== General Settings ===============================
 //================================================================================
@@ -113,7 +113,7 @@
  *
  *   Options: [Primary Language (english): 0, Secondary Language: 1]
  */
-#define LANGUAGE 0  // Default: 0
+#define LANGUAGE 1  // Default: 0
 
 /**
  * Status Screen
@@ -993,7 +993,7 @@
   */
 //#define CUSTOM_LABEL_0 "Disable Steppers"
 #define CUSTOM_LABEL_0 "Init.EEPROM"
-#define CUSTOM_GCODE_0 "M502\nM500\nM997\n"
+#define CUSTOM_GCODE_0 "M502\nM593F0\nM500\nM997\n"
 #define CUSTOM_LABEL_1 "Fast Calib.Delta"
 #define CUSTOM_GCODE_1 "G33P3V3\nM500\nM140 S0\n"
 #define CUSTOM_LABEL_2 "Fine Calib.Delta"
