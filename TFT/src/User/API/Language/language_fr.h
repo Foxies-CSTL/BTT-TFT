@@ -178,7 +178,7 @@
     #define STRING_TFT_USB_READ_ERROR     "Erreur de lecture de la clé USB!"
     #define STRING_ONBOARD_SD             "µSD CM"
     #define STRING_ONBOARD_USB            "USB CM"
-    #define STRING_ONBOARD_SD_READ_ERROR  "Erreur de lecture du port de la carte mère !"
+    #define STRING_ONBOARD_SD_READ_ERROR  "Erreur de lecture du port de la carte mère!"
     #define STRING_FILAMENT_RUNOUT        "Fin de Filament!"
 
     // Steppers, Print, Probe Process Commands / Status / Info
