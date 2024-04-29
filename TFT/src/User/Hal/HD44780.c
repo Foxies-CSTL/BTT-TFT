@@ -4,11 +4,11 @@
 
 #ifdef LCD2004_EMULATOR
 
-CIRCULAR_QUEUE *HD44780_queue = NULL;
+static CIRCULAR_QUEUE * HD44780_queue = NULL;
 
 void HD44780_DeConfig(void)
 {
-#ifdef GD32F2XX
+#if defined(GD32F2XX) || defined(GD32F3XX)
   nvic_irq_disable(EXTI10_15_IRQn);
 #else
   NVIC_InitTypeDef NVIC_InitStructure;
@@ -28,14 +28,14 @@ void HD44780_DeConfig(void)
 }
 
 /**
-* LCD_EN  PB15  4 line mode
-* LCD_RS  PB12
-* LCD_D4  PB13
-* LCD_D5  PB14
-* LCD_D6  PC7
-* LCD_D7  PC6
-*/
-void HD44780_Config(CIRCULAR_QUEUE *queue)
+ * LCD_EN  PB15  4 line mode
+ * LCD_RS  PB12
+ * LCD_D4  PB13
+ * LCD_D5  PB14
+ * LCD_D6  PC7
+ * LCD_D7  PC6
+ */
+void HD44780_Config(CIRCULAR_QUEUE * queue)
 {
   HD44780_queue = queue;
 
@@ -49,7 +49,7 @@ void HD44780_Config(CIRCULAR_QUEUE *queue)
   GPIO_InitSet(LCD_D4, MGPIO_MODE_IPD, 0);
   GPIO_InitSet(LCD_RS, MGPIO_MODE_IPD, 0);
 
-#ifdef GD32F2XX
+#if defined(GD32F2XX) || defined(GD32F3XX)
   gpio_exti_source_select(GPIO_EVENT_PORT_GPIOB, GPIO_EVENT_PIN_15);
 
   exti_init(EXTI_15, EXTI_INTERRUPT, EXTI_TRIG_RISING);
@@ -86,7 +86,7 @@ void HD44780_Config(CIRCULAR_QUEUE *queue)
 bool HD44780_writeData(void)
 {
   bool dataWritten = false;
-#ifdef GD32F2XX
+#if defined(GD32F2XX) || defined(GD32F3XX)
   if ((GPIO_ISTAT(GPIOB) & (1 << 15)) != 0)
   {
     uint8_t temp = ((GPIO_ISTAT(LCD_D7_PORT) & GPIO_PIN_6) >> 3 ) +  // D7
@@ -112,7 +112,7 @@ bool HD44780_writeData(void)
     uint8_t temp = ((LCD_D7_PORT->IDR & LCD_D7_PIN) >> 3 ) +         // D7
                    ((LCD_D6_PORT->IDR & LCD_D6_PIN) >> 5 ) +         // D6
                    ((LCD_D5_PORT->IDR & LCD_D5_PIN) >> 13) +         // D5
-                   ((LCD_D4_PORT->IDR & LCD_D4_PIN) >> 13) ;         // D4
+                   ((LCD_D4_PORT->IDR & LCD_D4_PIN) >> 13);          // D4
 
     if ((GPIOB->IDR & (1 << 12)) == 0)
     { //Command received
@@ -130,7 +130,7 @@ bool HD44780_writeData(void)
   return dataWritten;
 }
 
-bool HD44780_getData(uint8_t *data)
+bool HD44780_getData(uint8_t * data)
 {
   bool dataRead = false;
 

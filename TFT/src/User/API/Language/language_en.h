@@ -3,6 +3,8 @@
 
     // config.ini Parameter Settings - Screen Settings and Feature Settings
     #define STRING_LANGUAGE               "English"
+    #define STRING_ADVANCED_OK            "Advanced OK"
+    #define STRING_COMMAND_CHECKSUM       "Command checksum"
     #define STRING_EMULATED_M600          "Emulated M600"
     #define STRING_EMULATED_M109_M190     "Emulated M109 / M190"
     #define STRING_EVENT_LED              "Event LED"
@@ -161,7 +163,6 @@
     #define STRING_SHUTTING_DOWN          "Shutting down..."
     #define STRING_WAIT_TEMP_SHUT_DOWN    "Wait for the hotend temperature to be lower than %d℃"
     #define STRING_POWER_FAILED           "Continue printing?"  // Question Sign
-    #define STRING_PROCESS_RUNNING        "Process already running!"
     #define STRING_PROCESS_COMPLETED      "Process completed!"
     #define STRING_PROCESS_ABORTED        "Process aborted!"
 
@@ -336,13 +337,14 @@
     #define STRING_TUNING                 "Tuning"
     #define STRING_MPC                    "MPC"
     #define STRING_MPC_TITLE              "MPC autotune"
+    #define STRING_MPC_METHOD             "Method:"
     #define STRING_PID                    "PID"
     #define STRING_PID_TITLE              "PID autotune"
     #define STRING_TUNE_START_INFO        "Autotune may take some time to complete.\nContinue?"
     #define STRING_TUNE_EXTRUDER          "Tune steps"
     #define STRING_TUNE_EXT_EXTRUDE_100   "Ext. 100mm"
     #define STRING_TUNE_EXT_TEMP          "Extruder tuning | Heat"
-    #define STRING_TUNE_EXT_MARK120MM     "Mark 120 mm on your fillament.\nPress '%s' when ready.\nMeasure remaining length after extruding."
+    #define STRING_TUNE_EXT_MARK120MM     "Mark 120 mm on your filament.\nPress '%s' when ready.\nMeasure remaining length after extruding."
     #define STRING_TUNE_EXT_ADJ_ESTEPS    "Adjust E-Steps"
     #define STRING_TUNE_EXT_ESTEPS_SAVED  "New E-steps applied.\nDon't forget to save it in EEPROM.\nNew value: %0.2f"
     #define STRING_TUNE_EXT_MEASURED      "Length remaining:"

@@ -57,6 +57,7 @@ typedef enum
   AXIS_INDEX_Z,
   AXIS_INDEX_E0,
   AXIS_INDEX_E1,
+  AXIS_INDEX_E2,
   AXIS_INDEX_COUNT
 } AXIS_INDEX;
 
@@ -72,6 +73,7 @@ typedef enum
   STEPPER_INDEX_Z4,
   STEPPER_INDEX_E0,
   STEPPER_INDEX_E1,
+  STEPPER_INDEX_E2,
   STEPPER_INDEX_COUNT
 } STEPPER_INDEX;
 
@@ -90,13 +92,13 @@ typedef struct
   float MaxAcceleration[AXIS_INDEX_COUNT];
   float MaxFeedRate[AXIS_INDEX_COUNT];
   float Acceleration[3];
-  float Jerk[AXIS_INDEX_COUNT - 1];
+  float Jerk[4];
   float JunctionDeviation[1];
-  float HomeOffset[AXIS_INDEX_COUNT - 2];
+  float HomeOffset[3];
   float FwRetract[4];
   float FwRecover[4];
   float AutoRetract[1];
-  float HotendOffset[AXIS_INDEX_COUNT - 2];
+  float HotendOffset[3];
   float HotendPid[3];
   float BedPid[3];
   float ABLState[2];
@@ -106,11 +108,11 @@ typedef struct
   float DeltaTowerAngle[3];
   float DeltaDiagonalRod[3];
   float DeltaEndstop[3];
-  float ProbeOffset[AXIS_INDEX_COUNT - 2];
+  float ProbeOffset[3];
   float LinAdvance[2];
   float Current[STEPPER_INDEX_COUNT];
   float HybridThreshold[STEPPER_INDEX_COUNT];
-  float BumpSensitivity[STEPPER_INDEX_COUNT];
+  float BumpSensitivity[STEPPER_INDEX_COUNT - 3];
   float MblOffset[1];
 } PARAMETERS;
 
@@ -140,39 +142,39 @@ extern const LABEL junctionDeviationDisplayID[];
 extern const LABEL retractDisplayID[];
 extern const LABEL recoverDisplayID[];
 
-// Get enable element count for the parameter
+// get enable element count for the parameter
 uint8_t getEnabledElementCount(PARAMETER_NAME name);
 
-// Get element index out of total enabled enabled element
+// get element index out of total enabled enabled element.
 // If no element is enabled, total element count is returned
 uint8_t getEnabledElement(PARAMETER_NAME name, uint8_t index);
 
-// Get total enabled parameters
+// get total enabled parameters
 uint8_t getEnabledParameterCount(void);
 
-// Get PARAMETER_NAME of selected index out of total enabled parameters
+// get PARAMETER_NAME of selected index out of total enabled parameters.
 // If no parameter is enabled, total parameter count is returned
 PARAMETER_NAME getEnabledParameter(uint8_t index);
 
 float getParameter(PARAMETER_NAME name, uint8_t index);
 void setParameter(PARAMETER_NAME name, uint8_t index, float val);
 
-// Get total elements in a parameter
+// get total elements in a parameter
 uint8_t getElementCount(PARAMETER_NAME para);
 
-// Get type of value a parameter element holds
+// get type of value a parameter element holds
 VAL_TYPE getParameterValType(PARAMETER_NAME para, uint8_t index);
 
-// Send parameter cmd (Parameter value gets updated after the cmd passes through the cmd cache)
+// send parameter cmd (parameter value gets updated after the cmd passes through the cmd cache)
 void sendParameterCmd(PARAMETER_NAME para_index, uint8_t stepper_index, float Value);
 
-// Save parameter setting to eeprom
+// save parameter setting to eeprom
 void saveEepromSettings(void);
 
-// Restore settings from eeprom
+// restore settings from eeprom
 void restoreEepromSettings(void);
 
-// Reset settings and eeprom to default values
+// reset settings and eeprom to default values
 void resetEepromSettings(void);
 
 #ifdef __cplusplus

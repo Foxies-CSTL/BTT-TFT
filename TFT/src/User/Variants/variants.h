@@ -4,11 +4,11 @@
 #include "../Configuration.h"
 
 /*
-* hardware source
-* TIM3 for Buzzer timer
-* TIM6 for Neopixel RGB
-* TIM7 for OS Timer
-*/
+ * hardware source
+ * TIM3 for Buzzer timer
+ * TIM6 for Neopixel RGB
+ * TIM7 for OS Timer
+ */
 
 // Type of LCD driver, now support[RM68042, ILI9488, ILI9341, ILI9325, ST7789, HX8558, SSD1963].
 #define RM68042 (1 << 0)
@@ -71,6 +71,8 @@
   #include "pin_MKS_TFT32L_V3_0.h"
 #elif defined(MKS_TFT35_V1_0)
   #include "pin_MKS_TFT35_V1_0.h"
+#elif defined(MKS_GD_TFT28_V1_2_4)
+  #include "pin_MKS_GD_TFT28_V1_2_4.h"
 #endif
 
 #define LCD_ENCODER_SUPPORT (defined(LCD_ENCA_PIN) && defined(LCD_ENCB_PIN) && defined(LCD_BTN_PIN))
@@ -87,7 +89,7 @@
 #define _FONT_H(size) (size >> 8)
 #define _FONT_W(size) (size & 0xFF)
 
-#define FONT_SIZE_NORMAL _FONT_SIZE(BYTE_HEIGHT, BYTE_WIDTH)              // Normal font for common menu etc...
-#define FONT_SIZE_LARGE  _FONT_SIZE(LARGE_BYTE_HEIGHT, LARGE_BYTE_WIDTH)  // Large font for numpad menu etc...
+#define FONT_SIZE_NORMAL _FONT_SIZE(BYTE_HEIGHT, BYTE_WIDTH)              // Normal font for common menu etc.
+#define FONT_SIZE_LARGE  _FONT_SIZE(LARGE_BYTE_HEIGHT, LARGE_BYTE_WIDTH)  // Large font for numpad menu etc.
 
 #endif

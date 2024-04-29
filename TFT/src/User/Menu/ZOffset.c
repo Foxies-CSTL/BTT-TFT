@@ -6,7 +6,7 @@ static uint8_t curUnit_index = 0;
 static uint8_t curSubmenu_index = 0;
 
 // Show an error notification
-void zOffsetNotifyError(bool isStarted)
+static void zOffsetNotifyError(bool isStarted)
 {
   LABELCHAR(tempMsg, LABEL_PROBE_OFFSET)
 
@@ -14,14 +14,14 @@ void zOffsetNotifyError(bool isStarted)
     sprintf(tempMsg, "%s", textSelect(LABEL_HOME_OFFSET));
 
   if (!isStarted)
-    sprintf(&tempMsg[strlen(tempMsg)], " %s", textSelect(LABEL_OFF));
+    sprintf(strchr(tempMsg, '\0'), " %s", textSelect(LABEL_OFF));
   else
-    sprintf(&tempMsg[strlen(tempMsg)], " %s", textSelect(LABEL_ON));
+    sprintf(strchr(tempMsg, '\0'), " %s", textSelect(LABEL_ON));
 
   addToast(DIALOG_TYPE_ERROR, tempMsg);
 }
 
-void zOffsetDraw(bool status, float val)
+static void zOffsetDraw(bool status, float val)
 {
   char tempstr[20], tempstr2[20], tempstr3[30];
 

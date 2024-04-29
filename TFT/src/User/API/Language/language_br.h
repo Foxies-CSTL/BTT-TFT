@@ -3,6 +3,8 @@
 
     // config.ini Parameter Settings - Screen Settings and Feature Settings
     #define STRING_LANGUAGE               "Português BRASIL"
+    #define STRING_ADVANCED_OK            "Advanced OK"
+    #define STRING_COMMAND_CHECKSUM       "Command checksum"
     #define STRING_EMULATED_M600          "M600 emulado"
     #define STRING_EMULATED_M109_M190     "M109 / M190 emulado"
     #define STRING_EVENT_LED              "Event LED"
@@ -161,7 +163,6 @@
     #define STRING_SHUTTING_DOWN          "Desligar ..."
     #define STRING_WAIT_TEMP_SHUT_DOWN    "Espere que a temperatura do hotend seja inferior a %d℃"
     #define STRING_POWER_FAILED           "Continuar imprimindo?"
-    #define STRING_PROCESS_RUNNING        "Processo em andamento! Aguarde a conclusão"
     #define STRING_PROCESS_COMPLETED      "Processo concluído!"
     #define STRING_PROCESS_ABORTED        "Processo cancelado!"
 
@@ -336,6 +337,7 @@
     #define STRING_TUNING                 "Ajuste"// TRADUZIR MELHOR
     #define STRING_MPC                    "MPC"
     #define STRING_MPC_TITLE              "Auto Ajuste do MPC"
+    #define STRING_MPC_METHOD             "Método:"
     #define STRING_PID                    "PID"
     #define STRING_PID_TITLE              "Auto Ajuste do PID"
     #define STRING_TUNE_START_INFO        "O Auto Ajuste começará. Isso pode demorar. \nContinua?"

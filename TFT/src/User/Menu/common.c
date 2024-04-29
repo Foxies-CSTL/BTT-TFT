@@ -102,20 +102,16 @@ const uint16_t iconToggle[ITEM_TOGGLE_NUM] =
 
 // Check time elapsed against the time specified in milliseconds for displaying/updating info on screen
 // Use this for timed screen updates in menu loops only
-bool nextScreenUpdate(uint32_t duration)
+bool nextScreenUpdate(uint32_t refreshTime)
 {
   static uint32_t lastTime = 0;
-  uint32_t curTime = OS_GetTimeMs();
 
-  if (curTime > (lastTime + duration))
-  {
-    lastTime = curTime;
-    return true;
-  }
-  else
-  {
+  if (OS_GetTimeMs() - lastTime < refreshTime)
     return false;
-  }
+
+  lastTime = OS_GetTimeMs();
+
+  return true;
 }
 
 #ifdef FRIENDLY_Z_OFFSET_LANGUAGE
@@ -131,7 +127,7 @@ bool nextScreenUpdate(uint32_t duration)
   }
 #endif
 
-void drawBorder(const GUI_RECT *rect, uint16_t color, uint16_t edgeDistance)
+void drawBorder(const GUI_RECT * rect, uint16_t color, uint16_t edgeDistance)
 {
   //uint16_t origColor = GUI_GetColor();
 
@@ -142,7 +138,7 @@ void drawBorder(const GUI_RECT *rect, uint16_t color, uint16_t edgeDistance)
   //GUI_SetColor(origColor);
 }
 
-void drawBackground(const GUI_RECT *rect, uint16_t bgColor, uint16_t edgeDistance)
+void drawBackground(const GUI_RECT * rect, uint16_t bgColor, uint16_t edgeDistance)
 {
   //uint16_t origBgColor = GUI_GetBkColor();
 
@@ -153,7 +149,7 @@ void drawBackground(const GUI_RECT *rect, uint16_t bgColor, uint16_t edgeDistanc
   //GUI_SetBkColor(origBgColor);
 }
 
-void drawStandardValue(const GUI_RECT *rect, VALUE_TYPE valType, const void *val, uint16_t font,
+void drawStandardValue(const GUI_RECT * rect, VALUE_TYPE valType, const void * val, uint16_t font,
                        uint16_t color, uint16_t bgColor, uint16_t edgeDistance, bool clearBgColor)
 {
   uint16_t origColor = GUI_GetColor();
@@ -306,14 +302,14 @@ float editFloatValue(float minValue, float maxValue, float resetValue, float val
 }
 
 // set the hotend to the minimum extrusion temperature if user selected "OK"
-void heatToMinTemp(void)
+static void heatToMinTemp(void)
 {
-  heatSetTargetTemp(heatGetCurrentTool(), infoSettings.min_ext_temp, FROM_GUI);
+  heatSetTargetTemp(heatGetToolIndex(), infoSettings.min_ext_temp, FROM_GUI);
 }
 
 NOZZLE_STATUS warmupNozzle(void)
 {
-  uint8_t toolIndex = heatGetCurrentTool();
+  uint8_t toolIndex = heatGetToolIndex();
 
   if (heatGetTargetTemp(toolIndex) < infoSettings.min_ext_temp)
   {
@@ -334,6 +330,7 @@ NOZZLE_STATUS warmupNozzle(void)
     else
     { // contiunue with current temp but no lower than the minimum extruder temperature
       heatSetTargetTemp(toolIndex, MAX(infoSettings.min_ext_temp, heatGetCurrentTemp(toolIndex)), FROM_GUI);
+
       return SETTLING;
     }
   }
@@ -350,6 +347,7 @@ NOZZLE_STATUS warmupNozzle(void)
       strcat(tempMsg, tempStr);
 
       popupReminder(DIALOG_TYPE_ERROR, LABEL_WARNING, (uint8_t *)tempMsg);
+
       return COLD;
     }
   }

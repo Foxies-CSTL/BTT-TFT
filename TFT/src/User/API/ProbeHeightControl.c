@@ -5,13 +5,12 @@
 #define ENDSTOP_CMD_RRF "M564 S%d H%d\n"  // for RRF
 #define MOVE_Z_CMD      "G1 Z%.2f F%d\n"
 
-#define PROBE_UPDATE_DELAY 200  // 1 seconds is 1000
+#define PROBE_REFRESH_TIME 200  // 1 seconds is 1000
 
-static uint32_t nextQueryTime = 0;
 static uint8_t origEndstopsState = DISABLED;
 static float origAblState = DISABLED;
 
-// Enable probe height
+// Enable probe height.
 // Temporary disable software endstops and save ABL state
 void probeHeightEnable(void)
 {
@@ -20,23 +19,23 @@ void probeHeightEnable(void)
 
   if (origEndstopsState == ENABLED)  // if software endstops is enabled, disable it temporary
   {
-    if (infoMachineSettings.firmwareType == FW_REPRAPFW)
-      mustStoreCmd(ENDSTOP_CMD_RRF, 0, 0);
-    else
+    if (infoMachineSettings.firmwareType != FW_REPRAPFW)
       mustStoreCmd(ENDSTOP_CMD, 0);  // disable software endstops to move nozzle lower than Z0 if necessary
+    else
+      mustStoreCmd(ENDSTOP_CMD_RRF, 0, 0);
   }
 }
 
-// Disable probe height
+// Disable probe height.
 // Restore original software endstops state and ABL state
 void probeHeightDisable(void)
 {
   if (origEndstopsState == ENABLED)  // if software endstops was originally enabled, enable it again
   {
-    if (infoMachineSettings.firmwareType == FW_REPRAPFW)
-      mustStoreCmd(ENDSTOP_CMD_RRF, 1, 1);
-    else
+    if (infoMachineSettings.firmwareType != FW_REPRAPFW)
       mustStoreCmd(ENDSTOP_CMD, 1);  // enable software endstops
+    else
+      mustStoreCmd(ENDSTOP_CMD_RRF, 1, 1);
   }
 
   if (origAblState == ENABLED)  // if ABL was originally enabled, enable it again
@@ -110,9 +109,12 @@ void probeHeightMove(float unit)
 // Query for new coordinates
 void probeHeightQueryCoord(void)
 {
-  if (OS_GetTimeMs() > nextQueryTime)
-  {
-    coordinateQuery(0);  // query position manually for delay less than 1 second
-    nextQueryTime = OS_GetTimeMs() + PROBE_UPDATE_DELAY;
-  }
+  static uint32_t nextUpdateTime = 0;
+
+  if (OS_GetTimeMs() < nextUpdateTime)
+    return;
+
+  nextUpdateTime = OS_GetTimeMs() + PROBE_REFRESH_TIME;
+
+  coordinateQuery(0);  // query position manually for delay less than 1 second
 }
