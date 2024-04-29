@@ -3,6 +3,8 @@
 
     // config.ini Parameter Settings - Screen Settings and Feature Settings
     #define STRING_LANGUAGE               "Français"
+    #define STRING_ADVANCED_OK            "Advanced OK"
+    #define STRING_COMMAND_CHECKSUM       "Command checksum"
     #define STRING_EMULATED_M600          "Emuler M600"
     #define STRING_EMULATED_M109_M190     "Emuler M109 / M190"
     #define STRING_EVENT_LED              "LED Neopixel"
@@ -161,7 +163,6 @@
     #define STRING_SHUTTING_DOWN          "Extinction en cours..."
     #define STRING_WAIT_TEMP_SHUT_DOWN    "Attendez que la température de la buse soit inférieure à %d℃"
     #define STRING_POWER_FAILED           "Continuer l'impression ?"
-    #define STRING_PROCESS_RUNNING        "Processus en cours ! Veuillez patienter"
     #define STRING_PROCESS_COMPLETED      "Processus terminé !"
     #define STRING_PROCESS_ABORTED        "Processus annulé !"
 
@@ -336,6 +337,7 @@
     #define STRING_TUNING                 "Tuning"
     #define STRING_MPC                    "MPC"
     #define STRING_MPC_TITLE              "Autocalibrage MPC"
+    #define STRING_MPC_METHOD             "Méthode:"
     #define STRING_PID                    "PID"
     #define STRING_PID_TITLE              "Autocalibrage PID"
     #define STRING_TUNE_START_INFO        "L'autocalibrage va être lancé. Cela peut prendre quelques minutes.\nContinuer ?"

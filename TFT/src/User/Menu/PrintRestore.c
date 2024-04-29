@@ -14,15 +14,16 @@ void menuPrintRestore(void)
   {
     char okTxt[MAX_LANG_LABEL_LENGTH];
     char cancelTxt[MAX_LANG_LABEL_LENGTH];
-    loadLabelText((uint8_t*)okTxt, LABEL_CONFIRM);
-    loadLabelText((uint8_t*)cancelTxt, LABEL_CANCEL);
+    loadLabelText((uint8_t *)okTxt, LABEL_CONFIRM);
+    loadLabelText((uint8_t *)cancelTxt, LABEL_CANCEL);
 
-    popupDrawPage(DIALOG_TYPE_QUESTION, bottomDoubleBtn, textSelect(LABEL_POWER_FAILED), (uint8_t*)infoFile.path,
-                  (uint8_t*)okTxt, (uint8_t*)cancelTxt);
+    popupDrawPage(DIALOG_TYPE_QUESTION, bottomDoubleBtn, textSelect(LABEL_POWER_FAILED), (uint8_t *)infoFile.path,
+                  (uint8_t *)okTxt, (uint8_t *)cancelTxt);
 
     while (MENU_IS(menuPrintRestore))
     {
       key_num = KEY_GetValue(2, doubleBtnRect);
+
       switch (key_num)
       {
         case KEY_POPUP_CONFIRM:
@@ -33,7 +34,6 @@ void menuPrintRestore(void)
 
         case KEY_POPUP_CANCEL:
           powerFailedSetRestore(false);
-          // note: powerFailedExist function must be called first, otherwise powerFailedDelete will fail
           powerFailedDelete();
           // in case the calling function is menuPrintFromSource,
           // remove the filename from path to allow the files scanning from its folder avoiding a scanning error message
